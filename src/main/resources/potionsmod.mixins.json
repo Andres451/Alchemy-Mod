@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "andres451.potionsmod.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "PlayerMixin",
+    "WorldMixin",
+    "MobPathfinderMixin"
+  ],
+  "client": [
+    "EntityRendererDispatcherMixin",
+    "EffectRendererManagerMixin"
+  ]
+}

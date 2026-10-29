@@ -38,6 +38,8 @@ dependencies {
 	// included in builds as a runtime dependency
 	implementation(libs.loader)
 	implementation(libs.halplibe) // If you do not need halplibe you can delete this line
+	implementation(libs.catalyst.core)
+	implementation(libs.catalyst.effects)
 
 	// Only required at compilation
 	// provides documentation, can be removed if that isn't needed

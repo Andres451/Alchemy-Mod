@@ -1,11 +1,11 @@
 {
 	"schemaVersion": 1,
-	"id": "examplemod",
+	"id": "potionsmod",
 	"version": "${version}",
-	"name": "Example Mod",
-	"description": "This mod aims to help new BTA modders.",
+	"name": "Potions Mod",
+	"description": "A humble potion system for BTA.",
 	"authors": [
-		"Turnip Labs"
+		"Andres451"
 	],
 	"contact": {
 		"homepage": "",
@@ -16,11 +16,11 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"turniplabs.examplemod.ExampleMod"
+			"andres451.potionsmod.PotionsMod"
 		]
 	},
 	"mixins": [
-		"examplemod.mixins.json"
+		"potionsmod.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=${fabricloader}",

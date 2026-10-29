@@ -34,6 +34,9 @@ joml = "1.10.8" # Note: BTA uses 1.10.7, patch 8 removes the kotlin stdlib depen
 jomlPrimitivess = "1.10.0"
 ##########################################################################
 
+catalyst-core = "3.0.5"
+catalyst-effects = "3.0.1"
+
 [libraries]
 loader = { group = "net.fabricmc", name = "fabric-loader", version.ref = "loader" }
 halplibe = { group = "turniplabs", name = "halplibe", version.ref = "halplibe" }
@@ -49,6 +52,9 @@ lwjgl-glfw = { group = "org.lwjgl", name = "lwjgl-glfw", version.ref = "lwjgl"}
 lwjgl-openal = { group = "org.lwjgl", name = "lwjgl-openal", version.ref = "lwjgl"}
 lwjgl-opengl = { group = "org.lwjgl", name = "lwjgl-opengl", version.ref = "lwjgl"}
 lwjgl-stb = { group = "org.lwjgl", name = "lwjgl-stb", version.ref = "lwjgl"}
+
+catalyst-core = { group = "sunsetsatellite", name = "catalyst-core", version.ref = "catalyst-core" }
+catalyst-effects = { group = "sunsetsatellite", name = "catalyst-effects", version.ref = "catalyst-effects" }
 
 [bundles]
 btaLwjgl = [ "lwjgl", "lwjgl-glfw", "lwjgl-openal", "lwjgl-opengl", "lwjgl-stb", "legacyLwjgl" ]
