@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"andres451.potionsmod.PotionsMod"
+		],
+		"initModels": [
+			"andres451.potionsmod.ModModels"
 		]
 	},
 	"mixins": [
@@ -25,7 +28,10 @@
 	"depends": {
 		"fabricloader": ">=${fabricloader}",
 		"minecraft": "*",
-		"java": ">=${java}"
+		"java": ">=${java}",
+		"halplibe": "*",
+		"catalyst-core": "*",
+		"catalyst-effects": "*"
 	},
 	"suggests": {
 		"modmenu": ">=${modmenu}"
