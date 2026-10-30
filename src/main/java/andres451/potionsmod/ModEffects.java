@@ -1,6 +1,7 @@
 package andres451.potionsmod;
 
 import static andres451.potionsmod.PotionsMod.MOD_ID;
+import static andres451.potionsmod.PotionEffects.*;
 
 import java.util.Collections;
 import net.minecraft.core.entity.player.Player;
@@ -21,6 +22,8 @@ public class ModEffects {
 			Collections.emptyList(), EffectTimeType.RESET, 1).setDefaultDuration(ticks);
 	}
 
+	public static final Effect DAMAGE_BOOST = simple("damage_boost", DAMAGE_BOOST_DURATION);
+
 	public static final Effect REGEN = new Effect(
 		"effect." + MOD_ID + ".regen", MOD_ID + ":regen",
 		Collections.emptyList(), EffectTimeType.RESET, 1
@@ -28,10 +31,10 @@ public class ModEffects {
 		@Override
 		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
 			if (container.getParent() instanceof Player && stack.getTickCount() % 20 == 0) {
-				((Player) container.getParent()).heal(3);
+				((Player) container.getParent()).heal(2);
 			}
 		}
-	}.setDefaultDuration(100);
+	}.setDefaultDuration(REGEN_DURATION);
 
 	public static final Effect SPEED = new Effect(
 		"effect." + MOD_ID + ".speed", MOD_ID + ":speed",
@@ -45,30 +48,14 @@ public class ModEffects {
 				p.flySpeed *= 3.0F;
 			}
 		}
-	}.setDefaultDuration(100);
+	}.setDefaultDuration(SPEED_DURATION);
 
-	public static final Effect FLIGHT = new Effect(
-		"effect." + MOD_ID + ".flight", MOD_ID + ":flight",
-		Collections.emptyList(), EffectTimeType.RESET, 1
-	) {
-		@Override
-		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
-			if (!(container.getParent() instanceof Player)) return;
-			Player p = (Player) container.getParent();
-			p.fallDistance = 0.0F;
-			if (p.vehicle != null || p.isPlayerSleeping()) return;
-			if (p.isJumping()) {
-				p.yd = 0.3;        // UP
-			} else if (p.isSneaking()) {
-				p.yd = -0.3;       // DOWN
-			} else {
-				p.yd = 0.0;        // IDLE
-			}
-			p.flySpeed = 0.035F;   // HORIZONTAL SPEED
-		}
-	}.setDefaultDuration(300);
+	public static final Effect DIG_SPEED = simple("dig_speed", DIG_SPEED_DURATION);
 
-	//TODO: WIP
+	public static final Effect RESISTANCE = simple("resistance", RESISTANCE_DURATION);
+
+	public static final Effect SMALL = simple("small", SMALL_DURATION);
+
 	public static final Effect NIGHT_VISION = new Effect(
 		"effect." + MOD_ID + ".night_vision", MOD_ID + ":night_vision",
 		Collections.emptyList(), EffectTimeType.RESET, 1
@@ -92,14 +79,30 @@ public class ModEffects {
 			Runnable r = nightVisionRestore;
 			if (r != null) r.run();
 		}
-	}.setDefaultDuration(200);
+	}.setDefaultDuration(NIGHT_VISION_DURATION);
 
-	// EFFECT UI
-	public static final Effect DAMAGE_BOOST = simple("damage_boost", 200);
-	public static final Effect DIG_SPEED = simple("dig_speed", 200);
-	public static final Effect RESISTANCE = simple("resistance", 200);
-	public static final Effect SMALL = simple("small", 300);
-	public static final Effect INVISIBLE = simple("invisible", 300);
+	public static final Effect INVISIBLE = simple("invisible", INVISIBLE_DURATION);
+
+	public static final Effect FLIGHT = new Effect(
+		"effect." + MOD_ID + ".flight", MOD_ID + ":flight",
+		Collections.emptyList(), EffectTimeType.RESET, 1
+	) {
+		@Override
+		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
+			if (!(container.getParent() instanceof Player)) return;
+			Player p = (Player) container.getParent();
+			p.fallDistance = 0.0F;
+			if (p.vehicle != null || p.isPlayerSleeping()) return;
+			if (p.isJumping()) {
+				p.yd = 0.3;        // UP
+			} else if (p.isSneaking()) {
+				p.yd = -0.3;       // DOWN
+			} else {
+				p.yd = 0.0;        // IDLE
+			}
+			p.flySpeed = 0.035F;   // HORIZONTAL SPEED
+		}
+	}.setDefaultDuration(FLIGHT_DURATION);
 
 	public static volatile long nightVisionUntil = 0L;
 	public static volatile Runnable nightVisionApply = null;

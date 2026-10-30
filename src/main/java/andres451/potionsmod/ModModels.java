@@ -33,26 +33,27 @@ public class ModModels implements ModelEntrypoint {
 			dispatcher.addDispatch(makeModel(ModItems.jars[i], "jar_" + ModItems.JAR_COLORS[i]));
 		}
 
-		addEffectRenderer(ModEffects.REGEN, "jar_green", 0x8000AA00);
-		addEffectRenderer(ModEffects.DAMAGE_BOOST, "jar_red", 0x80CC0000);
-		addEffectRenderer(ModEffects.SPEED, "jar_blue", 0x800055FF);
-		addEffectRenderer(ModEffects.DIG_SPEED, "jar_purple", 0x80AA00FF);
-		addEffectRenderer(ModEffects.RESISTANCE, "jar_yellow", 0x80FFDD00);
-		addEffectRenderer(ModEffects.SMALL, "jar_orange", 0x80FF8800);
-		addEffectRenderer(ModEffects.FLIGHT, "jar_skyblue", 0x8055CCFF);
-		addEffectRenderer(ModEffects.NIGHT_VISION, "jar_cyan", 0x8000CCCC);
-		addEffectRenderer(ModEffects.INVISIBLE, "jar_lime", 0x8088FF00);
+		addEffectRenderer(ModEffects.REGEN, "regen.png", 0x8000AA00);
+		addEffectRenderer(ModEffects.SPEED, "speed.png", 0x800055FF);
+		addEffectRenderer(ModEffects.DAMAGE_BOOST, "damage.png", 0x80CC0000);
+		addEffectRenderer(ModEffects.DIG_SPEED, "mining.png", 0x80AA00FF);
+		addEffectRenderer(ModEffects.RESISTANCE, "resistance.png", 0x80FFDD00);
+		addEffectRenderer(ModEffects.SMALL, "size.png", 0x80FF8800);
+		addEffectRenderer(ModEffects.FLIGHT, "fly.png", 0x8055CCFF);
+		addEffectRenderer(ModEffects.NIGHT_VISION, "vision.png", 0x8000CCCC);
+		addEffectRenderer(ModEffects.INVISIBLE, "lapsus.png", 0x8088FF00);
+
 		ModEffects.nightVisionApply = NightVisionClient::apply;
 		ModEffects.nightVisionRestore = NightVisionClient::restore;
+
 		LOGGER.info("Item Models initialized.");
 	}
 public static @NotNull ItemModelStandard makeModel(@NotNull final Item item, @NotNull final String textureValue) {
 		return setIcon(new ItemModelStandard(item, null), NamespaceID.getTemp(MOD_ID, "item/" + textureValue));
 	}
 
-	private static void addEffectRenderer(Effect effect, String texture, int argbColor) {
-		EffectRenderer<Effect> renderer = new EffectRenderer<Effect>(effect)
-			.setIcon(TextureRegistry.getTexture(MOD_ID + ":item/" + texture));
+	private static void addEffectRenderer(Effect effect, String iconFile, int argbColor) {
+		EffectRenderer<Effect> renderer = new EffectRenderer<Effect>(effect).setIcon(iconFile);
 		renderer.setColor(argbColor);
 		EffectRendererDispatcher.getInstance().addDispatch(effect, renderer);
 	}

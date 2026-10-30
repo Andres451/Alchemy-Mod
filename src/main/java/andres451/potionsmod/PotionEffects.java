@@ -2,18 +2,37 @@ package andres451.potionsmod;
 
 import net.minecraft.core.entity.player.Player;
 
+import static andres451.potionsmod.ModEffects.*;
+import sunsetsatellite.catalyst.effects.api.effect.Effect;
+
 public class PotionEffects {
+
+	public static final int DAMAGE_BOOST_DURATION = 300;
+	public static final int REGEN_DURATION = 300;
+	public static final int SPEED_DURATION = 300;
+	public static final int DIG_SPEED_DURATION = 1200;
+	public static final int RESISTANCE_DURATION = 1200;
+	public static final int NIGHT_VISION_DURATION = 1200;
+	public static final int SMALL_DURATION = 300;
+	public static final int INVISIBLE_DURATION = 300;
+	public static final int FLIGHT_DURATION = 300;
+
+	public static final String[] JAR_COLORS = {
+		"red", "green", "blue", "cyan", "lime",
+		"orange", "purple", "skyblue", "white", "yellow"
+	};
+
 	public static void apply(String color, Player player) {
 		switch (color) {
-			case "red":     ModEffects.give(player, ModEffects.DAMAGE_BOOST, 200, 1); break;
-			case "green":   ModEffects.give(player, ModEffects.REGEN, 200, 1); break;
-			case "blue":    ModEffects.give(player, ModEffects.SPEED, 200, 1); break;
-			case "purple":  ModEffects.give(player, ModEffects.DIG_SPEED, 200, 1); break;
-			case "yellow":  ModEffects.give(player, ModEffects.RESISTANCE, 200, 1); break;
-			case "orange":  ModEffects.give(player, ModEffects.SMALL, 300, 1);break;
-			case "cyan":    ModEffects.give(player, ModEffects.NIGHT_VISION, 200, 1);break;
-			case "lime":    ModEffects.give(player, ModEffects.INVISIBLE, 300, 1);break;
-			case "skyblue": ModEffects.give(player, ModEffects.FLIGHT, 300, 1);break;
+			case "red":     ModEffects.give(player, DAMAGE_BOOST, DAMAGE_BOOST_DURATION, 1); break;
+			case "green":   ModEffects.give(player, REGEN, REGEN_DURATION, 1); break;
+			case "blue":    ModEffects.give(player, SPEED, SPEED_DURATION, 1); break;
+			case "purple":  ModEffects.give(player, DIG_SPEED, DIG_SPEED_DURATION, 1); break;
+			case "yellow":  ModEffects.give(player, RESISTANCE, RESISTANCE_DURATION, 1); break;
+			case "orange":  ModEffects.give(player, SMALL, SMALL_DURATION, 1);break;
+			case "cyan":    ModEffects.give(player, NIGHT_VISION, NIGHT_VISION_DURATION, 1);break;
+			case "lime":    ModEffects.give(player, INVISIBLE, INVISIBLE_DURATION, 1);break;
+			case "skyblue": ModEffects.give(player, FLIGHT, FLIGHT_DURATION, 1);break;
 			case "white":   ModEffects.clear(player); break;
 			default: break;
 		}

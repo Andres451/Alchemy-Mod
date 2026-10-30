@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.HalpLibe;
 import turniplabs.halplibe.event.defs.CommonEvents;
 import turniplabs.halplibe.util.dependency.Key;
+import net.minecraft.core.sound.SoundTypes;
 
 public class PotionsMod implements ModInitializer {
 	public static final String MOD_ID = HalpLibe.registerMod("potionsmod", true);
@@ -21,6 +22,8 @@ public class PotionsMod implements ModInitializer {
 
 	public void beforeGameStart() {
 		ModItems.initItems();
+		SoundTypes.register("potionsmod.drink");
+		SoundTypes.loadSoundsJson("potionsmod");
 	}
 
 	public void afterGameStart() {
