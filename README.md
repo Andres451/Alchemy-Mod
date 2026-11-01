@@ -1,4 +1,4 @@
-# Potion Mod
+# Alchemy Mod
 
 Potion system for BTA
 
