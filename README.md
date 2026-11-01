@@ -16,7 +16,7 @@ Potion system for BTA
 
 4. Install Catalyst Effects 3.0.1 or newer.
 
-5. Put the BTA Potions JAR in the instance's mods folder.
+5. Put the Alchemy-Mod JAR in the instance's mods folder.
 
 ## Potions list
 
