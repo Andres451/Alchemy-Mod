@@ -22,4 +22,11 @@ public class ModItems {
 				.build(new ModPotionItem("jar_" + c, MOD_ID + ":item/jar_" + c, 17007 + i, c));
 		}
     }
+
+	public static Item jar(String color) {
+		for (int i = 0; i < JAR_COLORS.length; i++) {
+			if (JAR_COLORS[i].equals(color)) return jars[i];
+		}
+		throw new IllegalArgumentException("Wrong color: " + color);
+	}
 }

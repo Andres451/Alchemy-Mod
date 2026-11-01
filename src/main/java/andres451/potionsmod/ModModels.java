@@ -8,10 +8,13 @@ import net.minecraft.client.render.block.model.BlockModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelDispatcher;
 import net.minecraft.client.render.item.model.ItemModelStandard;
 import net.minecraft.client.render.texture.stitcher.TextureRegistry;
+import net.minecraft.core.block.Block;
 import net.minecraft.core.item.Item;
 import net.minecraft.core.util.collection.NamespaceID;
 import org.jetbrains.annotations.NotNull;
 import turniplabs.halplibe.util.ModelEntrypoint;
+import net.minecraft.client.render.block.model.BlockModelHorizontalRotation;
+import net.minecraft.core.util.helper.Side;
 
 import static andres451.potionsmod.PotionsMod.LOGGER;
 import static andres451.potionsmod.PotionsMod.MOD_ID;
@@ -24,7 +27,19 @@ public class ModModels implements ModelEntrypoint {
 
 	@Override
 	public void initBlockModels(BlockModelDispatcher dispatcher) {
+		addTableModel(dispatcher, ModBlocks.alchemyTable, "");
+		addTableModel(dispatcher, ModBlocks.alchemyTableActive, "_active");
 		LOGGER.info("Block Models initialized.");
+	}
+
+	private static void addTableModel(BlockModelDispatcher dispatcher, Block<?> block, String suffix) {
+		dispatcher.addDispatch(new BlockModelHorizontalRotation<>(block)
+			.setTex(MOD_ID + ":block/alchemy_front" + suffix, Side.NORTH)
+			.setTex(MOD_ID + ":block/alchemy_back" + suffix, Side.SOUTH)
+			.setTex(MOD_ID + ":block/alchemy_left" + suffix, Side.EAST)
+			.setTex(MOD_ID + ":block/alchemy_right" + suffix, Side.WEST)
+			.setTex(MOD_ID + ":block/alchemy_top" + suffix, Side.TOP)
+			.setTex(MOD_ID + ":block/alchemy_bottom" + suffix, Side.BOTTOM));
 	}
 
 	@Override

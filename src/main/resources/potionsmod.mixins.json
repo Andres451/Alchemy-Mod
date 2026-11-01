@@ -8,10 +8,17 @@
   "mixins": [
     "PlayerMixin",
     "WorldMixin",
-    "MobPathfinderMixin"
+    "MobPathfinderMixin",
+    "PlayerMixinPotionsScreens",
+    "PacketHandlerClientMixinPotions",
+    "PlayerLocalMixinPotionsScreens",
+    "PlayerMixinPotionsScreens"
   ],
   "client": [
     "EntityRendererDispatcherMixin",
-    "EffectRendererManagerMixin"
-  ]
+    "EffectRendererManagerMixin",
+    "PlayerLocalMixinPotionsScreens",
+    "PacketHandlerClientMixinPotions"
+  ],
+  "server": [ "PlayerServerMixinPotionsScreens" ]
 }
