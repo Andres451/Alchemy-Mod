@@ -18,8 +18,8 @@
 		"main": [
 			"andres451.potionsmod.PotionsMod"
 		],
-		"initModels": [
-			"andres451.potionsmod.ModModels"
+		"client": [
+			"andres451.potionsmod.PotionsModClient"
 		]
 	},
 	"mixins": [
