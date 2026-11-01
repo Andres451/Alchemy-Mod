@@ -2,14 +2,14 @@
 	"schemaVersion": 1,
 	"id": "potionsmod",
 	"version": "${version}",
-	"name": "Potions Mod",
+	"name": "Alchemy Mod",
 	"description": "A humble potion system for BTA.",
 	"authors": [
 		"Andres451"
 	],
 	"contact": {
 		"homepage": "",
-		"sources": ""
+		"sources": "https://github.com/Andres451/BTA-Potions"
 	},
 	"icon": "icon.png",
 	"license": "CC0-1.0",
