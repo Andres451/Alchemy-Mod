@@ -1,6 +1,5 @@
 package andres451.potionsmod;
 
-import static andres451.potionsmod.PotionsMod.LOGGER;
 import static andres451.potionsmod.PotionsMod.MOD_ID;
 
 import net.minecraft.client.render.block.model.BlockModelDispatcher;
@@ -22,7 +21,6 @@ public class ModModels {
 	public void initBlockModels(BlockModelDispatcher dispatcher) {
 		addTableModel(dispatcher, ModBlocks.alchemyTable, "");
 		addTableModel(dispatcher, ModBlocks.alchemyTableActive, "_active");
-		LOGGER.info("Block Models initialized.");
 	}
 
 	private static void addTableModel(BlockModelDispatcher dispatcher, Block<?> block, String suffix) {
@@ -39,7 +37,6 @@ public class ModModels {
 		for (int i = 0; i < ModItems.JAR_COLORS.length; i++) {
 			dispatcher.addDispatch(makeModel(ModItems.jars[i], "jar_" + ModItems.JAR_COLORS[i]));
 		}
-		LOGGER.info("Item Models initialized.");
 	}
 
 	public void registerEffectRenderers() {

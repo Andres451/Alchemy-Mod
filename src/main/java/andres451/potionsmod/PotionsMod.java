@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.HalpLibe;
 import turniplabs.halplibe.event.defs.CommonEvents;
+import turniplabs.halplibe.helper.RecipeBuilder;
 import turniplabs.halplibe.util.dependency.Key;
 import net.minecraft.core.sound.SoundTypes;
 import net.minecraft.core.block.entity.TileEntityDispatcher;
@@ -17,10 +18,13 @@ public class PotionsMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		CommonEvents.BEFORE_GAME_START.listen(Key.of(MOD_ID), this::beforeGameStart);
-		CommonEvents.AFTER_GAME_START.listen(Key.of(MOD_ID), this::afterGameStart);
+		Key key = Key.of(MOD_ID);
+		CommonEvents.BEFORE_GAME_START.listen(key, this::beforeGameStart);
+		CommonEvents.AFTER_GAME_START.listen(key, this::afterGameStart);
+		CommonEvents.RECIPES_NAMESPACE_INIT.listen(key, () -> RecipeBuilder.initNameSpace(MOD_ID));
+		CommonEvents.RECIPES_READY.listen(key, ModRecipes::init);
+
 		ModEffects.init();
-		LOGGER.info("PotionsMod initialized.");
 	}
 
 	public void beforeGameStart() {

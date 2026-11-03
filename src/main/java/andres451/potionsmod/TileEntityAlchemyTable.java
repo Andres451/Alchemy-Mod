@@ -12,6 +12,8 @@ import net.minecraft.core.player.inventory.container.Container;
 import net.minecraft.core.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.core.entity.Entity;
+import net.minecraft.core.sound.SoundCategory;
 
 public class TileEntityAlchemyTable extends TileEntity implements Container {
 	private static final int COOKING_TIME = 300;
@@ -121,6 +123,14 @@ public class TileEntityAlchemyTable extends TileEntity implements Container {
 
 		if (burnTime > 0 && recipe != null) {
 			progress++;
+
+			if (this.worldObj != null && progress % 30 == 1) {
+				float pitch = 0.8F + this.worldObj.rand.nextFloat() * 0.4F;
+				this.worldObj.playSoundEffect((Entity) null, SoundCategory.WORLD_SOUNDS,
+					this.tilePos.x + 0.5, this.tilePos.y + 0.5, this.tilePos.z + 0.5,
+					"tile.acidbubble", 0.4F, pitch);
+			}
+
 			if (progress >= maxProgress) {
 				progress = 0;
 				AlchemyRecipes.apply(slots, recipe);
