@@ -19,10 +19,14 @@ public class AlchemyRecipes {
 	public static final int SLOT_FUEL = 4;
 
 	public record Ingredient(IItemConvertible item, int meta) {
+		public static final int ANY = -1;
 		public boolean matches(ItemStack s) {
 			if (item == null || s == null) return false;
 			if (s.itemID != item.getDefaultStack().itemID) return false;
-			return meta < 0 || s.getMetadata() == meta;
+			return meta == ANY || s.getMetadata() == meta;
+		}
+		public ItemStack toStack() {
+			return meta == ANY ? item.getDefaultStack() : new ItemStack(item, 1, meta);
 		}
 	}
 
@@ -30,7 +34,8 @@ public class AlchemyRecipes {
 
 	private static final List<Recipe> RECIPES = new ArrayList<>();
 
-	private static Ingredient any(IItemConvertible item) { return new Ingredient(item, -1); }
+	private static Ingredient any(IItemConvertible item) { return new Ingredient(item, Ingredient.ANY); }
+
 	private static Ingredient meta(IItemConvertible item, int m) { return new Ingredient(item, m); }
 
 	private static void add(Item base, Ingredient a, Ingredient b, NamespaceID liquid, Item result) {
@@ -102,6 +107,10 @@ public class AlchemyRecipes {
 			if ((r.a().matches(a) && r.b().matches(b)) || (r.a().matches(b) && r.b().matches(a))) return r;
 		}
 		return null;
+	}
+
+	public static List<Recipe> all() {
+		return RECIPES;
 	}
 
 	public static boolean isIngredient(ItemStack s) {

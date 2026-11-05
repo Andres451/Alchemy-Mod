@@ -18,7 +18,8 @@
     "EntityRendererDispatcherMixin",
     "EffectRendererManagerMixin",
     "PlayerLocalMixinPotionsScreens",
-    "PacketHandlerClientMixinPotions"
+    "PacketHandlerClientMixinPotions",
+    "GuidebookMixinPotions"
   ],
   "server": [ "PlayerServerMixinPotionsScreens" ]
 }

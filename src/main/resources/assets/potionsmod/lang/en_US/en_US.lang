@@ -31,3 +31,4 @@ potionsmod.gui.alchemy_table.title=Alchemy Table
 container.potionsmod.alchemy_table.name=Alchemy Table
 tile.potionsmod.alchemy.table.name=Alchemy Table
 tile.potionsmod.alchemy.table.desc=For potion brewing.
+potionsmod.guidebook.section.alchemy= Alchemy
