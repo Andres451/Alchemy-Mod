@@ -76,9 +76,9 @@ public class AlchemyRecipes {
 		add(antidote, any(Items.OLIVINE), any(Items.SLIMEBALL), water, healing);
 		add(antidote, lapis, any(Blocks.FLOWER_LIGHT_BLUE), water, speed);
 
-		pair(any(Items.QUARTZ), damage, speed, mining, acid);
+		pair(any(Items.QUARTZ), speed, damage, mining, acid);
 		pair(any(Items.DUST_GLOWSTONE), damage, healing, resistance, acid);
-		pair(any(Items.GUNPOWDER), speed, healing, vision, acid);
+		pair(any(Items.GUNPOWDER), healing, speed, vision, acid);
 		pair(any(Blocks.MUSHROOM_BROWN), mining, resistance, size, milk);
 		pair(any(Items.SULFUR), resistance, vision, lapsus, milk);
 		pair(any(Items.DUST_SUGAR), vision, mining, flying, milk);
