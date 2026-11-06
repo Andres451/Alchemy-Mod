@@ -2,14 +2,13 @@ package andres451.potionsmod.mixin;
 
 import andres451.potionsmod.ModEffects;
 import net.minecraft.core.block.Block;
+import net.minecraft.core.data.gamerule.GameRule;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.entity.player.Player;
 import net.minecraft.core.util.helper.DamageType;
+import net.minecraft.core.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -86,5 +85,13 @@ public abstract class PlayerMixin {
 			self.bbHeight = self.isSneaking() ? 0.5F : 0.8F;
 			self.setBounds();
 		}
+	}
+
+	@Redirect(method = "onDeath",
+		at = @At(value = "INVOKE",
+			target = "Lnet/minecraft/core/world/World;getGameRuleValue(Lnet/minecraft/core/data/gamerule/GameRule;)Ljava/lang/Object;"))
+	private Object keepInventory(World world, GameRule<?> rule) {
+		if (ModEffects.has((Player) (Object) this, ModEffects.MORTALITY)) return Boolean.TRUE;
+		return world.getGameRuleValue(rule);
 	}
 }

@@ -9,9 +9,6 @@
     "PlayerMixin",
     "WorldMixin",
     "MobPathfinderMixin",
-    "PlayerMixinPotionsScreens",
-    "PacketHandlerClientMixinPotions",
-    "PlayerLocalMixinPotionsScreens",
     "PlayerMixinPotionsScreens"
   ],
   "client": [

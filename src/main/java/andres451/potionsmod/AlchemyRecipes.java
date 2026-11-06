@@ -53,6 +53,12 @@ public class AlchemyRecipes {
 		add(p1, extra, any(p2), liquid, result);
 	}
 
+	private static void triple(Item p1, Item p2, Item p3, Item result, NamespaceID liquid) {
+		add(p1, any(p2), any(p3), liquid, result);
+		add(p2, any(p1), any(p3), liquid, result);
+		add(p3, any(p1), any(p2), liquid, result);
+	}
+
 	public static void init() {
 		Item antidote = ModItems.jar("white");
 		Item damage = ModItems.jar("red");
@@ -64,6 +70,8 @@ public class AlchemyRecipes {
 		Item size = ModItems.jar("orange");
 		Item lapsus = ModItems.jar("lime");
 		Item flying = ModItems.jar("skyblue");
+		Item somnia = ModItems.jar("pink");
+		Item mortality = ModItems.jar("magenta");
 
 		Ingredient boneMeal = meta(Items.DYE, DyeColor.WHITE.itemMeta);
 		Ingredient lapis = meta(Items.DYE, DyeColor.BLUE.itemMeta);
@@ -79,9 +87,12 @@ public class AlchemyRecipes {
 		pair(any(Items.QUARTZ), speed, damage, mining, acid);
 		pair(any(Items.DUST_GLOWSTONE), damage, healing, resistance, acid);
 		pair(any(Items.GUNPOWDER), healing, speed, vision, acid);
+		triple(damage, healing, speed, mortality, acid);
+
 		pair(any(Blocks.MUSHROOM_BROWN), mining, resistance, size, milk);
 		pair(any(Items.SULFUR), resistance, vision, lapsus, milk);
 		pair(any(Items.DUST_SUGAR), vision, mining, flying, milk);
+		triple(mining, resistance, vision, somnia, milk);
 	}
 
 	public static void apply(ItemStack[] slots, Recipe r) {

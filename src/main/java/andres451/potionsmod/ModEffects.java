@@ -81,6 +81,9 @@ public class ModEffects {
 		}
 	}.setDefaultDuration(NIGHT_VISION_DURATION);
 
+	public static volatile Runnable nightVisionApply = null;
+	public static volatile Runnable nightVisionRestore = null;
+
 	public static final Effect INVISIBLE = simple("invisible", INVISIBLE_DURATION);
 
 	public static final Effect FLIGHT = new Effect(
@@ -104,10 +107,7 @@ public class ModEffects {
 		}
 	}.setDefaultDuration(FLIGHT_DURATION);
 
-	public static volatile long nightVisionUntil = 0L;
-	public static volatile Runnable nightVisionApply = null;
-	public static volatile Runnable nightVisionRestore = null;
-
+	public static final Effect MORTALITY = simple("mortality", MORTALITY_DURATION);
 
 	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE };
 
@@ -124,7 +124,6 @@ public class ModEffects {
 		stack.start(target.getContainer());
 	}
 
-	// REMOVE MOD EFFECTS FROM PLAYER
 	public static void clear(Player player) {
 		EffectContainer<?> container = ((IHasEffects<?>) player).getContainer();
 		for (Effect e : ALL) {

@@ -10,17 +10,16 @@ public class PotionEffects {
 	public static final int DAMAGE_BOOST_DURATION = 300;
 	public static final int REGEN_DURATION = 300;
 	public static final int SPEED_DURATION = 300;
+
 	public static final int DIG_SPEED_DURATION = 1200;
 	public static final int RESISTANCE_DURATION = 1200;
 	public static final int NIGHT_VISION_DURATION = 1200;
+
 	public static final int SMALL_DURATION = 300;
 	public static final int INVISIBLE_DURATION = 300;
 	public static final int FLIGHT_DURATION = 300;
 
-	public static final String[] JAR_COLORS = {
-		"red", "green", "blue", "cyan", "lime",
-		"orange", "purple", "skyblue", "white", "yellow"
-	};
+	public static final int MORTALITY_DURATION = 300;
 
 	public static void apply(String color, Player player) {
 		switch (color) {
@@ -33,6 +32,7 @@ public class PotionEffects {
 			case "cyan":    ModEffects.give(player, NIGHT_VISION, NIGHT_VISION_DURATION, 1);break;
 			case "lime":    ModEffects.give(player, INVISIBLE, INVISIBLE_DURATION, 1);break;
 			case "skyblue": ModEffects.give(player, FLIGHT, FLIGHT_DURATION, 1);break;
+			case "magenta": ModEffects.give(player, MORTALITY, MORTALITY_DURATION, 1);break;
 			case "white":   ModEffects.clear(player); break;
 			default: break;
 		}
