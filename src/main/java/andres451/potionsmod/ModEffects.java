@@ -107,7 +107,7 @@ public class ModEffects {
 		}
 	}.setDefaultDuration(FLIGHT_DURATION);
 
-	public static final Effect MORTALITY = simple("mortality", MORTALITY_DURATION);
+	public static final Effect INVENTORY = simple("inventory", INVENTORY_DURATION);
 
 	public static final Effect SOMNIA = new Effect(
 		"effect." + MOD_ID + ".somnia", MOD_ID + ":somnia",
@@ -123,7 +123,7 @@ public class ModEffects {
 		}
 	}.setDefaultDuration(SOMNIA_DURATION);
 
-	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE, MORTALITY, SOMNIA };
+	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE, INVENTORY, SOMNIA };
 
 	public static void init() {
 		for (Effect e : ALL) {

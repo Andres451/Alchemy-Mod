@@ -19,7 +19,7 @@ public class PotionEffects {
 	public static final int INVISIBLE_DURATION = 300;
 	public static final int FLIGHT_DURATION = 300;
 
-	public static final int MORTALITY_DURATION = 60;
+	public static final int INVENTORY_DURATION = 60;
 	public static final int SOMNIA_DURATION = 60;
 
 	public static void apply(String color, Player player) {
@@ -33,7 +33,7 @@ public class PotionEffects {
 			case "cyan":    ModEffects.give(player, NIGHT_VISION, NIGHT_VISION_DURATION, 1);break;
 			case "lime":    ModEffects.give(player, INVISIBLE, INVISIBLE_DURATION, 1);break;
 			case "skyblue": ModEffects.give(player, FLIGHT, FLIGHT_DURATION, 1);break;
-			case "magenta": ModEffects.give(player, MORTALITY, MORTALITY_DURATION, 1);break;
+			case "magenta": ModEffects.give(player, INVENTORY, INVENTORY_DURATION, 1);break;
 			case "pink":    ModEffects.give(player, SOMNIA, SOMNIA_DURATION, 1); break;
 			case "white":   ModEffects.clear(player); break;
 			default: break;

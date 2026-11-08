@@ -49,7 +49,7 @@ public class ModModels {
 		addEffectRenderer(ModEffects.FLIGHT, "fly.png", 0x8055CCFF);
 		addEffectRenderer(ModEffects.NIGHT_VISION, "vision.png", 0x8000CCCC);
 		addEffectRenderer(ModEffects.INVISIBLE, "lapsus.png", 0x8088FF00);
-		addEffectRenderer(ModEffects.MORTALITY, "mortality.png", 0x8088FF00);
+		addEffectRenderer(ModEffects.INVENTORY, "inventory.png", 0x8088FF00);
 		addEffectRenderer(ModEffects.SOMNIA, "somnia.png", 0x8088FF00);
 	}
 

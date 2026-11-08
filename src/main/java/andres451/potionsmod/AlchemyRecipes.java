@@ -71,7 +71,7 @@ public class AlchemyRecipes {
 		Item lapsus = ModItems.jar("lime");
 		Item flying = ModItems.jar("skyblue");
 		Item somnia = ModItems.jar("pink");
-		Item mortality = ModItems.jar("magenta");
+		Item inventory = ModItems.jar("magenta");
 
 		Ingredient boneMeal = meta(Items.DYE, DyeColor.WHITE.itemMeta);
 		Ingredient lapis = meta(Items.DYE, DyeColor.BLUE.itemMeta);
@@ -87,7 +87,7 @@ public class AlchemyRecipes {
 		pair(any(Items.QUARTZ), speed, damage, mining, acid);
 		pair(any(Items.DUST_GLOWSTONE), damage, healing, resistance, acid);
 		pair(any(Items.GUNPOWDER), healing, speed, vision, acid);
-		triple(damage, healing, speed, mortality, acid);
+		triple(damage, healing, speed, inventory, acid);
 
 		pair(any(Blocks.MUSHROOM_BROWN), mining, resistance, size, milk);
 		pair(any(Items.SULFUR), resistance, vision, lapsus, milk);

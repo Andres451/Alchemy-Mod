@@ -91,7 +91,7 @@ public abstract class PlayerMixin {
 		at = @At(value = "INVOKE",
 			target = "Lnet/minecraft/core/world/World;getGameRuleValue(Lnet/minecraft/core/data/gamerule/GameRule;)Ljava/lang/Object;"))
 	private Object keepInventory(World world, GameRule<?> rule) {
-		if (ModEffects.has((Player) (Object) this, ModEffects.MORTALITY)) return Boolean.TRUE;
+		if (ModEffects.has((Player) (Object) this, ModEffects.INVENTORY)) return Boolean.TRUE;
 		return world.getGameRuleValue(rule);
 	}
 }
