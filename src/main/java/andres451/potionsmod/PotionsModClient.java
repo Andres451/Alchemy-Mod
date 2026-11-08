@@ -20,7 +20,5 @@ public class PotionsModClient implements ClientModInitializer {
 
 	private void afterClientStart() {
 		MODELS.registerEffectRenderers();
-		ModEffects.nightVisionApply = NightVisionClient::apply;
-		ModEffects.nightVisionRestore = NightVisionClient::restore;
 	}
 }

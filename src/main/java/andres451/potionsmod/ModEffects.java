@@ -56,33 +56,7 @@ public class ModEffects {
 
 	public static final Effect SMALL = simple("small", SMALL_DURATION);
 
-	public static final Effect NIGHT_VISION = new Effect(
-		"effect." + MOD_ID + ".night_vision", MOD_ID + ":night_vision",
-		Collections.emptyList(), EffectTimeType.RESET, 1
-	) {
-		@Override
-		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
-			if (container.getParent() instanceof Player) {
-				Runnable r = nightVisionApply;
-				if (r != null) r.run();
-			}
-		}
-
-		@Override
-		public <T> void expired(EffectStack stack, EffectContainer<T> container) {
-			Runnable r = nightVisionRestore;
-			if (r != null) r.run();
-		}
-
-		@Override
-		public <T> void removed(EffectStack stack, EffectContainer<T> container) {
-			Runnable r = nightVisionRestore;
-			if (r != null) r.run();
-		}
-	}.setDefaultDuration(NIGHT_VISION_DURATION);
-
-	public static volatile Runnable nightVisionApply = null;
-	public static volatile Runnable nightVisionRestore = null;
+	public static final Effect NIGHT_VISION = simple("night_vision", NIGHT_VISION_DURATION);
 
 	public static final Effect INVISIBLE = simple("invisible", INVISIBLE_DURATION);
 

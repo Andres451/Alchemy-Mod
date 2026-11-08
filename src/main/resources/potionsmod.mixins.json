@@ -14,11 +14,11 @@
   ],
   "client": [
     "EntityRendererDispatcherMixin",
-    "EffectRendererManagerMixin",
     "PlayerLocalMixinPotionsScreens",
     "PacketHandlerClientMixinPotions",
     "GuidebookMixinPotions",
-    "MinecraftMixinSomnia"
+    "MinecraftMixinSomnia",
+    "LightmapHelperMixin"
   ],
   "server": [ "PlayerServerMixinPotionsScreens",
   "PlayerServerMixinSomnia"
