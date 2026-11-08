@@ -123,7 +123,7 @@ public class ModEffects {
 		}
 	}.setDefaultDuration(SOMNIA_DURATION);
 
-	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE };
+	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE, MORTALITY, SOMNIA };
 
 	public static void init() {
 		for (Effect e : ALL) {

@@ -17,7 +17,8 @@
     "EffectRendererManagerMixin",
     "PlayerLocalMixinPotionsScreens",
     "PacketHandlerClientMixinPotions",
-    "GuidebookMixinPotions"
+    "GuidebookMixinPotions",
+    "MinecraftMixinSomnia"
   ],
   "server": [ "PlayerServerMixinPotionsScreens",
   "PlayerServerMixinSomnia"
