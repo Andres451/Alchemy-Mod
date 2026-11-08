@@ -40,17 +40,17 @@ public class ModModels {
 	}
 
 	public void registerEffectRenderers() {
-		addEffectRenderer(ModEffects.REGEN, "regen.png", 0x8000AA00);
-		addEffectRenderer(ModEffects.SPEED, "speed.png", 0x800055FF);
-		addEffectRenderer(ModEffects.DAMAGE_BOOST, "damage.png", 0x80CC0000);
-		addEffectRenderer(ModEffects.DIG_SPEED, "mining.png", 0x80AA00FF);
-		addEffectRenderer(ModEffects.RESISTANCE, "resistance.png", 0x80FFDD00);
-		addEffectRenderer(ModEffects.SMALL, "size.png", 0x80FF8800);
-		addEffectRenderer(ModEffects.FLIGHT, "fly.png", 0x8055CCFF);
-		addEffectRenderer(ModEffects.NIGHT_VISION, "vision.png", 0x8000CCCC);
-		addEffectRenderer(ModEffects.INVISIBLE, "lapsus.png", 0x8088FF00);
-		addEffectRenderer(ModEffects.INVENTORY, "inventory.png", 0x8088FF00);
-		addEffectRenderer(ModEffects.SOMNIA, "somnia.png", 0x8088FF00);
+		addEffectRenderer(ModEffects.REGEN, "regen.png", 0x00000000);
+		addEffectRenderer(ModEffects.SPEED, "speed.png", 0x00000000);
+		addEffectRenderer(ModEffects.DAMAGE_BOOST, "damage.png", 0x00000000);
+		addEffectRenderer(ModEffects.DIG_SPEED, "mining.png", 0x00000000);
+		addEffectRenderer(ModEffects.RESISTANCE, "resistance.png", 0x00000000);
+		addEffectRenderer(ModEffects.SMALL, "size.png", 0x00000000);
+		addEffectRenderer(ModEffects.FLIGHT, "fly.png", 0x00000000);
+		addEffectRenderer(ModEffects.NIGHT_VISION, "vision.png", 0x00000000);
+		addEffectRenderer(ModEffects.INVISIBLE, "lapsus.png", 0x00000000);
+		addEffectRenderer(ModEffects.INVENTORY, "inventory.png", 0x00000000);
+		addEffectRenderer(ModEffects.SOMNIA, "somnia.png", 0x00000000);
 	}
 
 	private static void addEffectRenderer(Effect effect, String iconFile, int argbColor) {
