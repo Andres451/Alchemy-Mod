@@ -109,6 +109,20 @@ public class ModEffects {
 
 	public static final Effect MORTALITY = simple("mortality", MORTALITY_DURATION);
 
+	public static final Effect SOMNIA = new Effect(
+		"effect." + MOD_ID + ".somnia", MOD_ID + ":somnia",
+		Collections.emptyList(), EffectTimeType.RESET, 1
+	) {
+		@Override
+		public <T> void expired(EffectStack stack, EffectContainer<T> container) {
+			if (container.getParent() instanceof Player) {
+				Player p = (Player) container.getParent();
+				if (!p.world.isClientSide) ((ISomnia) p).potions$somnia();
+				if (p.isPlayerSleeping() && p instanceof ISomniaSync s) s.potions$syncSleep();
+			}
+		}
+	}.setDefaultDuration(SOMNIA_DURATION);
+
 	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE };
 
 	public static void init() {

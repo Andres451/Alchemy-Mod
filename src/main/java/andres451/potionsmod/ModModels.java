@@ -50,6 +50,7 @@ public class ModModels {
 		addEffectRenderer(ModEffects.NIGHT_VISION, "vision.png", 0x8000CCCC);
 		addEffectRenderer(ModEffects.INVISIBLE, "lapsus.png", 0x8088FF00);
 		addEffectRenderer(ModEffects.MORTALITY, "mortality.png", 0x8088FF00);
+		addEffectRenderer(ModEffects.SOMNIA, "somnia.png", 0x8088FF00);
 	}
 
 	private static void addEffectRenderer(Effect effect, String iconFile, int argbColor) {

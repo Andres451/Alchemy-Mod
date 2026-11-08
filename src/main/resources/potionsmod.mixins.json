@@ -9,7 +9,8 @@
     "PlayerMixin",
     "WorldMixin",
     "MobPathfinderMixin",
-    "PlayerMixinPotionsScreens"
+    "PlayerMixinPotionsScreens",
+    "PlayerMixinSomnia"
   ],
   "client": [
     "EntityRendererDispatcherMixin",
@@ -18,5 +19,7 @@
     "PacketHandlerClientMixinPotions",
     "GuidebookMixinPotions"
   ],
-  "server": [ "PlayerServerMixinPotionsScreens" ]
+  "server": [ "PlayerServerMixinPotionsScreens",
+  "PlayerServerMixinSomnia"
+  ]
 }
