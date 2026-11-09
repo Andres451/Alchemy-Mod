@@ -27,10 +27,13 @@ Potion system for BTA
 4. Tools: Dig, Chop and Mine faster. 
 5. Defense: Immunity to fire, blast and acid damage, also less damage received.
 6. Vision: Allows to see in the dark.
+7. Inventory: Keeps inventory on death, if you die within 3 seconds after drinking it.
 7. Size: Reduce your size to 1 block tall.
 8. Lapsus: Complete invisibility, armor included, enemies ignore you, even if they saw you before.
 9. Fly: Allows you to fly, as if you were in creative, but slower and without crossing blocks.
+10. Somnia: Makes you sleep, anywhere, in any dimension, and sets your spawn point there.
 
 ## Current Recipes
   
-<img width="1064" height="465" alt="recipes" src="https://github.com/user-attachments/assets/a050450b-0652-4603-9582-62d0ad775058" />
+<img width="1010" height="578" alt="RECIPES_" src="https://github.com/user-attachments/assets/c3769a7c-793a-4530-921b-dd8708938ece" />
+
