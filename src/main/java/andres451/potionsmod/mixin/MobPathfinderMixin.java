@@ -16,7 +16,6 @@ public abstract class MobPathfinderMixin {
 	@Shadow protected Entity target;
 	@Shadow protected Path pathToEntity;
 
-	// MOB STOP FOLLOWING INVISIBLE
 	@Inject(method = "updateAI", at = @At("HEAD"))
 	private void dropInvisibleTarget(CallbackInfo ci) {
 		if (target instanceof Player && ModEffects.has((Player) target, ModEffects.INVISIBLE)) {

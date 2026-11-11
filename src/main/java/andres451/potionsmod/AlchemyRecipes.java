@@ -72,6 +72,7 @@ public class AlchemyRecipes {
 		Item flying = ModItems.jar("skyblue");
 		Item somnia = ModItems.jar("pink");
 		Item inventory = ModItems.jar("magenta");
+		Item reach = ModItems.jar("lightmagenta");
 
 		Ingredient boneMeal = meta(Items.DYE, DyeColor.WHITE.itemMeta);
 		Ingredient lapis = meta(Items.DYE, DyeColor.BLUE.itemMeta);
@@ -93,6 +94,8 @@ public class AlchemyRecipes {
 		pair(any(Items.SULFUR), resistance, vision, lapsus, milk);
 		pair(any(Items.DUST_SUGAR), vision, mining, flying, milk);
 		triple(mining, resistance, vision, somnia, milk);
+
+		pair(any(Blocks.RUBYGLASS_GROWTH), size, damage, reach, acid);
 	}
 
 	public static void apply(ItemStack[] slots, Recipe r) {

@@ -22,6 +22,9 @@ item.potionsmod.jar_pink.name=Somnia Potion
 item.potionsmod.jar_pink.desc=Makes you sleep anywhere.
 item.potionsmod.jar_magenta.name=Inventory Potion
 item.potionsmod.jar_magenta.desc=Keep your inventory on death.
+item.potionsmod.jar_lightmagenta.name=Reach Potion
+item.potionsmod.jar_lightmagenta.desc=Increases interaction distance.
+
 effect.potionsmod.regen.name=Healing
 effect.potionsmod.damage_boost.name=Damage
 effect.potionsmod.speed.name=Speed
@@ -33,6 +36,8 @@ effect.potionsmod.night_vision.name=Vision
 effect.potionsmod.invisible.name=Lapsus
 effect.potionsmod.somnia.name=Somnia
 effect.potionsmod.inventory.name=Inventory
+effect.potionsmod.reach.name=Reach
+
 potionsmod.gui.alchemy_table.title=Alchemy Table
 container.potionsmod.alchemy_table.name=Alchemy Table
 tile.potionsmod.alchemy.table.name=Alchemy Table

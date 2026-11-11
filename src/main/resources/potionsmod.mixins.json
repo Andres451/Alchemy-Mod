@@ -18,9 +18,12 @@
     "PacketHandlerClientMixinPotions",
     "GuidebookMixinPotions",
     "MinecraftMixinSomnia",
-    "LightmapHelperMixin"
+    "LightmapHelperMixin",
+    "WorldRendererMixinReach"
   ],
-  "server": [ "PlayerServerMixinPotionsScreens",
-  "PlayerServerMixinSomnia"
+  "server": [
+    "PlayerServerMixinPotionsScreens",
+    "PlayerServerMixinSomnia",
+    "PacketHandlerServerMixinReach"
   ]
 }

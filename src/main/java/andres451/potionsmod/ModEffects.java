@@ -97,7 +97,9 @@ public class ModEffects {
 		}
 	}.setDefaultDuration(SOMNIA_DURATION);
 
-	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE, INVENTORY, SOMNIA };
+	public static final Effect REACH = simple("reach", REACH_DURATION);
+
+	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE, INVENTORY, SOMNIA, REACH };
 
 	public static void init() {
 		for (Effect e : ALL) {

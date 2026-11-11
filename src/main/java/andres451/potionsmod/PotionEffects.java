@@ -22,6 +22,8 @@ public class PotionEffects {
 	public static final int INVENTORY_DURATION = 60;
 	public static final int SOMNIA_DURATION = 60;
 
+	public static final int REACH_DURATION = 1200;
+
 	public static void apply(String color, Player player) {
 		switch (color) {
 			case "red":     ModEffects.give(player, DAMAGE_BOOST, DAMAGE_BOOST_DURATION, 1); break;
@@ -35,6 +37,7 @@ public class PotionEffects {
 			case "skyblue": ModEffects.give(player, FLIGHT, FLIGHT_DURATION, 1);break;
 			case "magenta": ModEffects.give(player, INVENTORY, INVENTORY_DURATION, 1);break;
 			case "pink":    ModEffects.give(player, SOMNIA, SOMNIA_DURATION, 1); break;
+			case "lightmagenta": ModEffects.give(player, REACH, REACH_DURATION, 1); break;
 			case "white":   ModEffects.clear(player); break;
 			default: break;
 		}
