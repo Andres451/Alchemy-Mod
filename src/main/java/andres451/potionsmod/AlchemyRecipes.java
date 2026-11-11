@@ -73,9 +73,12 @@ public class AlchemyRecipes {
 		Item somnia = ModItems.jar("pink");
 		Item inventory = ModItems.jar("magenta");
 		Item reach = ModItems.jar("lightmagenta");
+		Item reposition = ModItems.jar("black");
 
 		Ingredient boneMeal = meta(Items.DYE, DyeColor.WHITE.itemMeta);
 		Ingredient lapis = meta(Items.DYE, DyeColor.BLUE.itemMeta);
+		Ingredient inkSack = meta(Items.DYE, DyeColor.BLACK.itemMeta);
+
 		NamespaceID water = ItemBucket.STATE_WATER;
 		NamespaceID acid = ItemBucket.STATE_ACID;
 		NamespaceID milk = ItemBucket.STATE_MILK;
@@ -96,6 +99,7 @@ public class AlchemyRecipes {
 		triple(mining, resistance, vision, somnia, milk);
 
 		pair(any(Blocks.RUBYGLASS_GROWTH), size, damage, reach, acid);
+		pair(inkSack, flying, speed, reposition, acid);
 	}
 
 	public static void apply(ItemStack[] slots, Recipe r) {

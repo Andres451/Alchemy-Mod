@@ -1,7 +1,8 @@
 {
   "potion_drink": {
-    "sounds": [
-      "potion_drink.ogg"
-    ]
+    "sounds": [ "potion_drink.ogg" ]
+  },
+  "teleport": {
+    "sounds": [ "teleport.ogg" ]
   }
 }

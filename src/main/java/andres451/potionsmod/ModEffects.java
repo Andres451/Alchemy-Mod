@@ -99,7 +99,19 @@ public class ModEffects {
 
 	public static final Effect REACH = simple("reach", REACH_DURATION);
 
-	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE, INVENTORY, SOMNIA, REACH };
+	public static final Effect REPOSITION = new Effect(
+		"effect." + MOD_ID + ".reposition", MOD_ID + ":reposition",
+		Collections.emptyList(), EffectTimeType.RESET, 1
+	) {
+		@Override
+		public <T> void expired(EffectStack stack, EffectContainer<T> container) {
+			if (container.getParent() instanceof Player p && !p.world.isClientSide) {
+				PotionEffects.finishReposition(p);
+			}
+		}
+	}.setDefaultDuration(REPOSITION_DURATION);
+
+	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE, INVENTORY, SOMNIA, REACH, REPOSITION };
 
 	public static void init() {
 		for (Effect e : ALL) {
