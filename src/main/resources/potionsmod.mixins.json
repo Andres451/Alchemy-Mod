@@ -24,6 +24,7 @@
   "server": [
     "PlayerServerMixinPotionsScreens",
     "PlayerServerMixinSomnia",
-    "PacketHandlerServerMixinReach"
+    "PacketHandlerServerMixinReach",
+    "PlayerServerMixinTeleport"
   ]
 }

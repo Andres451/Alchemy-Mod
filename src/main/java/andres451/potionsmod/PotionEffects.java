@@ -49,7 +49,7 @@ public class PotionEffects {
 		}
 	}
 
-	private static final double REPOSITION_RANGE = 256;
+	private static final double REPOSITION_RANGE = 200;
 	private static final java.util.Map<Player, double[]> REPOSITION_TARGETS = new java.util.WeakHashMap<>();
 
 	private static void startReposition(Player p) {
@@ -83,6 +83,7 @@ public class PotionEffects {
 		p.world.playSoundAtEntity(null, p, REPOSITION_SOUND, 0.7F, 0.6F);
 
 		p.moveTo(t[0], t[1], t[2], p.yRot, p.xRot);
+		if (p instanceof ITeleportSync s) s.potions$syncTeleport();
 		p.fallDistance = 0.0F;
 
 		p.world.playSoundAtEntity(null, p, REPOSITION_SOUND, 0.7F, 1.0F);
