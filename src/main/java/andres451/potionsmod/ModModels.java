@@ -40,25 +40,24 @@ public class ModModels {
 	}
 
 	public void registerEffectRenderers() {
-		addEffectRenderer(ModEffects.REGEN, "regen.png", 0x00000000);
-		addEffectRenderer(ModEffects.SPEED, "speed.png", 0x00000000);
-		addEffectRenderer(ModEffects.DAMAGE_BOOST, "damage.png", 0x00000000);
-		addEffectRenderer(ModEffects.DIG_SPEED, "mining.png", 0x00000000);
-		addEffectRenderer(ModEffects.RESISTANCE, "resistance.png", 0x00000000);
-		addEffectRenderer(ModEffects.SMALL, "size.png", 0x00000000);
-		addEffectRenderer(ModEffects.FLIGHT, "fly.png", 0x00000000);
-		addEffectRenderer(ModEffects.NIGHT_VISION, "vision.png", 0x00000000);
-		addEffectRenderer(ModEffects.INVISIBLE, "lapsus.png", 0x00000000);
-		addEffectRenderer(ModEffects.INVENTORY, "inventory.png", 0x00000000);
-		addEffectRenderer(ModEffects.SOMNIA, "somnia.png", 0x00000000);
-		addEffectRenderer(ModEffects.REACH, "reach.png", 0x00000000);
-		addEffectRenderer(ModEffects.REPOSITION, "reposition.png", 0x00000000);
-		addEffectRenderer(ModEffects.ASTRAL, "astral.png", 0x00000000);
+		addEffectRenderer(ModEffects.REGEN, "regen.png");
+		addEffectRenderer(ModEffects.SPEED, "speed.png");
+		addEffectRenderer(ModEffects.DAMAGE_BOOST, "damage.png");
+		addEffectRenderer(ModEffects.DIG_SPEED, "mining.png");
+		addEffectRenderer(ModEffects.RESISTANCE, "resistance.png");
+		addEffectRenderer(ModEffects.SMALL, "size.png");
+		addEffectRenderer(ModEffects.FLIGHT, "fly.png");
+		addEffectRenderer(ModEffects.NIGHT_VISION, "vision.png");
+		addEffectRenderer(ModEffects.INVISIBLE, "lapsus.png");
+		addEffectRenderer(ModEffects.INVENTORY, "inventory.png");
+		addEffectRenderer(ModEffects.SOMNIA, "somnia.png");
+		addEffectRenderer(ModEffects.REACH, "reach.png");
+		addEffectRenderer(ModEffects.REPOSITION, "reposition.png");
+		addEffectRenderer(ModEffects.ASTRAL, "astral.png");
 	}
 
-	private static void addEffectRenderer(Effect effect, String iconFile, int argbColor) {
+	private static void addEffectRenderer(Effect effect, String iconFile) {
 		EffectRenderer<Effect> renderer = new EffectRenderer<Effect>(effect).setIcon(iconFile);
-		renderer.setColor(argbColor);
 		EffectRendererDispatcher.getInstance().addDispatch(effect, renderer);
 	}
 

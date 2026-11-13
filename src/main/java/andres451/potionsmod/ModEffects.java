@@ -5,15 +5,12 @@ import static andres451.potionsmod.PotionEffects.*;
 
 import java.util.Collections;
 import net.minecraft.core.entity.player.Player;
-import sunsetsatellite.catalyst.effects.api.attribute.Attributes;
 import sunsetsatellite.catalyst.effects.api.effect.Effect;
 import sunsetsatellite.catalyst.effects.api.effect.EffectContainer;
 import sunsetsatellite.catalyst.effects.api.effect.EffectStack;
 import sunsetsatellite.catalyst.effects.api.effect.EffectTimeType;
 import sunsetsatellite.catalyst.effects.api.effect.Effects;
 import sunsetsatellite.catalyst.effects.api.effect.IHasEffects;
-import sunsetsatellite.catalyst.effects.api.modifier.ModifierType;
-import sunsetsatellite.catalyst.effects.api.modifier.type.IntModifier;
 
 public class ModEffects {
 
@@ -42,8 +39,7 @@ public class ModEffects {
 	) {
 		@Override
 		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
-			if (container.getParent() instanceof Player) {
-				Player p = (Player) container.getParent();
+			if (container.getParent() instanceof Player p) {
 				p.speed *= 3.0F;
 				p.flySpeed *= 3.0F;
 			}
@@ -66,8 +62,7 @@ public class ModEffects {
 	) {
 		@Override
 		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
-			if (!(container.getParent() instanceof Player)) return;
-			Player p = (Player) container.getParent();
+			if (!(container.getParent() instanceof Player p)) return;
 			p.fallDistance = 0.0F;
 			if (p.vehicle != null || p.isPlayerSleeping()) return;
 			if (p.isJumping()) {
@@ -89,8 +84,7 @@ public class ModEffects {
 	) {
 		@Override
 		public <T> void expired(EffectStack stack, EffectContainer<T> container) {
-			if (container.getParent() instanceof Player) {
-				Player p = (Player) container.getParent();
+			if (container.getParent() instanceof Player p) {
 				if (!p.world.isClientSide) ((ISomnia) p).potions$somnia();
 				if (p.isPlayerSleeping() && p instanceof ISomniaSync s) s.potions$syncSleep();
 			}
