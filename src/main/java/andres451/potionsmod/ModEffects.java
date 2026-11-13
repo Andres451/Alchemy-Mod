@@ -111,7 +111,10 @@ public class ModEffects {
 		}
 	}.setDefaultDuration(REPOSITION_DURATION);
 
-	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION, INVISIBLE, INVENTORY, SOMNIA, REACH, REPOSITION };
+	public static final Effect ASTRAL = simple("astral", ASTRAL_DURATION);
+
+	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION,
+		INVISIBLE, INVENTORY, SOMNIA, REACH, REPOSITION, ASTRAL };
 
 	public static void init() {
 		for (Effect e : ALL) {

@@ -7,7 +7,6 @@ import static andres451.potionsmod.ModEffects.*;
 import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.util.phys.HitResult;
 import net.minecraft.core.world.pos.TilePos;
-import sunsetsatellite.catalyst.effects.api.effect.Effect;
 
 public class PotionEffects {
 
@@ -29,6 +28,8 @@ public class PotionEffects {
 	public static final int REACH_DURATION = 1200;
 	public static final int REPOSITION_DURATION = 60;
 
+	public static final int ASTRAL_DURATION = 300;
+
 	public static void apply(String color, Player player) {
 		switch (color) {
 			case "red":     ModEffects.give(player, DAMAGE_BOOST, DAMAGE_BOOST_DURATION, 1); break;
@@ -43,6 +44,7 @@ public class PotionEffects {
 			case "magenta": ModEffects.give(player, INVENTORY, INVENTORY_DURATION, 1);break;
 			case "pink":    ModEffects.give(player, SOMNIA, SOMNIA_DURATION, 1); break;
 			case "lightmagenta": ModEffects.give(player, REACH, REACH_DURATION, 1); break;
+			case "ultramarine": startAstral(player); break;
 			case "black": startReposition(player); break;
 			case "white":   ModEffects.clear(player); break;
 			default: break;
@@ -87,5 +89,10 @@ public class PotionEffects {
 		p.fallDistance = 0.0F;
 
 		p.world.playSoundAtEntity(null, p, REPOSITION_SOUND, 0.7F, 1.0F);
+	}
+
+	private static void startAstral(Player p) {
+		if (ModEffects.has(p, ModEffects.ASTRAL)) return;
+		ModEffects.give(p, ASTRAL, ASTRAL_DURATION, 1);
 	}
 }

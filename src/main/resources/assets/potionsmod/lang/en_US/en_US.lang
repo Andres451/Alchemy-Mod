@@ -24,8 +24,10 @@ item.potionsmod.jar_magenta.name=Inventory Potion
 item.potionsmod.jar_magenta.desc=Keep your inventory on death.
 item.potionsmod.jar_lightmagenta.name=Reach Potion
 item.potionsmod.jar_lightmagenta.desc=Increases interaction distance.
-item.potionsmod.jar_black.name=Reposition Potion
+item.potionsmod.jar_black.name=Warp Potion
 item.potionsmod.jar_black.desc=Teleports you to where you were looking when you drank it.
+item.potionsmod.jar_ultramarine.name=Astral Potion
+item.potionsmod.jar_ultramarine.desc=Spectate your surroundings for a short time and go back to your body.
 
 effect.potionsmod.regen.name=Healing
 effect.potionsmod.damage_boost.name=Damage
@@ -39,7 +41,8 @@ effect.potionsmod.invisible.name=Lapsus
 effect.potionsmod.somnia.name=Somnia
 effect.potionsmod.inventory.name=Inventory
 effect.potionsmod.reach.name=Reach
-effect.potionsmod.reposition.name=Reposition
+effect.potionsmod.reposition.name=Warp
+effect.potionsmod.astral.name=Astral
 
 potionsmod.gui.alchemy_table.title=Alchemy Table
 container.potionsmod.alchemy_table.name=Alchemy Table

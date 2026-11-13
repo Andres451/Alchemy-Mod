@@ -19,7 +19,9 @@
     "GuidebookMixinPotions",
     "MinecraftMixinSomnia",
     "LightmapHelperMixin",
-    "WorldRendererMixinReach"
+    "WorldRendererMixinReach",
+    "WorldRendererMixinAstral",
+    "PlayerInputMixinAstral"
   ],
   "server": [
     "PlayerServerMixinPotionsScreens",

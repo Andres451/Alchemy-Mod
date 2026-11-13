@@ -53,6 +53,7 @@ public class ModModels {
 		addEffectRenderer(ModEffects.SOMNIA, "somnia.png", 0x00000000);
 		addEffectRenderer(ModEffects.REACH, "reach.png", 0x00000000);
 		addEffectRenderer(ModEffects.REPOSITION, "reposition.png", 0x00000000);
+		addEffectRenderer(ModEffects.ASTRAL, "astral.png", 0x00000000);
 	}
 
 	private static void addEffectRenderer(Effect effect, String iconFile, int argbColor) {
