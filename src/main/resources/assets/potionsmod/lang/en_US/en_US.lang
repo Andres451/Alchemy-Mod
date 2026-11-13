@@ -27,7 +27,9 @@ item.potionsmod.jar_lightmagenta.desc=Increases interaction distance.
 item.potionsmod.jar_black.name=Warp Potion
 item.potionsmod.jar_black.desc=Teleports you to where you were looking when you drank it.
 item.potionsmod.jar_ultramarine.name=Astral Potion
-item.potionsmod.jar_ultramarine.desc=Spectate your surroundings for a short time and go back to your body.
+item.potionsmod.jar_ultramarine.desc=Spectate your surroundings for a short time before going back to your body.
+item.potionsmod.jar_chartreuse.name=Recall Potion
+item.potionsmod.jar_chartreuse.desc=Sends you back home, then returns you to your current position.
 
 effect.potionsmod.regen.name=Healing
 effect.potionsmod.damage_boost.name=Damage
@@ -43,6 +45,7 @@ effect.potionsmod.inventory.name=Inventory
 effect.potionsmod.reach.name=Reach
 effect.potionsmod.reposition.name=Warp
 effect.potionsmod.astral.name=Astral
+effect.potionsmod.popping.name=Recall
 
 potionsmod.gui.alchemy_table.title=Alchemy Table
 container.potionsmod.alchemy_table.name=Alchemy Table

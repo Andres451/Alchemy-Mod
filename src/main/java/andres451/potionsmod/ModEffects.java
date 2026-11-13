@@ -107,8 +107,23 @@ public class ModEffects {
 
 	public static final Effect ASTRAL = simple("astral", ASTRAL_DURATION);
 
+	public static final Effect POPPING = new Effect(
+		"effect." + MOD_ID + ".popping", MOD_ID + ":popping",
+		Collections.emptyList(), EffectTimeType.RESET, 1
+	) {
+		@Override
+		public <T> void expired(EffectStack stack, EffectContainer<T> container) {
+			if (container.getParent() instanceof Player p && !p.world.isClientSide) PotionEffects.finishPopping(p);
+		}
+
+		@Override
+		public <T> void removed(EffectStack stack, EffectContainer<T> container) {
+			if (container.getParent() instanceof Player p && !p.world.isClientSide) PotionEffects.finishPopping(p);
+		}
+	}.setDefaultDuration(POPPING_DURATION);
+
 	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION,
-		INVISIBLE, INVENTORY, SOMNIA, REACH, REPOSITION, ASTRAL };
+		INVISIBLE, INVENTORY, SOMNIA, REACH, REPOSITION, ASTRAL, POPPING };
 
 	public static void init() {
 		for (Effect e : ALL) {

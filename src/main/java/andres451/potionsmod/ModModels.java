@@ -54,6 +54,7 @@ public class ModModels {
 		addEffectRenderer(ModEffects.REACH, "reach.png");
 		addEffectRenderer(ModEffects.REPOSITION, "reposition.png");
 		addEffectRenderer(ModEffects.ASTRAL, "astral.png");
+		addEffectRenderer(ModEffects.POPPING, "popping.png");
 	}
 
 	private static void addEffectRenderer(Effect effect, String iconFile) {

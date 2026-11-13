@@ -6,6 +6,8 @@ import static andres451.potionsmod.ModEffects.*;
 
 import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.util.phys.HitResult;
+import net.minecraft.core.world.World;
+import net.minecraft.core.world.chunk.provider.ChunkProvider;
 import net.minecraft.core.world.pos.TilePos;
 
 public class PotionEffects {
@@ -28,7 +30,8 @@ public class PotionEffects {
 	public static final int REACH_DURATION = 1200;
 	public static final int REPOSITION_DURATION = 60;
 
-	public static final int ASTRAL_DURATION = 300;
+	public static final int ASTRAL_DURATION = 400;
+	public static final int POPPING_DURATION = 200;
 
 	public static void apply(String color, Player player) {
 		switch (color) {
@@ -46,7 +49,11 @@ public class PotionEffects {
 			case "lightmagenta": ModEffects.give(player, REACH, REACH_DURATION, 1); break;
 			case "ultramarine": startAstral(player); break;
 			case "black": startReposition(player); break;
-			case "white":   ModEffects.clear(player); break;
+			case "chartreuse": startPopping(player); break;
+			case "white":
+				POPPING_ORIGIN.remove(player);
+				ModEffects.clear(player);
+				break;
 			default: break;
 		}
 	}
@@ -94,5 +101,71 @@ public class PotionEffects {
 	private static void startAstral(Player p) {
 		if (ModEffects.has(p, ModEffects.ASTRAL)) return;
 		ModEffects.give(p, ASTRAL, ASTRAL_DURATION, 1);
+	}
+
+	public record Hop(int dim, int mode, double x, double y, double z) {}
+
+	private static final java.util.Map<Player, double[]> POPPING_ORIGIN = new java.util.WeakHashMap<>();
+
+	private static void loadChunk(World w, int x, int z) {
+		ChunkProvider cp = w.getChunkProvider();
+		cp.setCurrentChunkOver(x >> 4, z >> 4);
+		cp.prepareChunk(x >> 4, z >> 4);
+	}
+
+	public static double[] destination(World w, Hop h) {
+		if (h.mode() == 0) { // COORDS: SOMNIA OR DRINK POINT
+			loadChunk(w, MathHelper.floor(h.x()), MathHelper.floor(h.z()));
+			return new double[]{h.x(), h.y(), h.z()};
+		}
+		TilePos pos = null;
+		if (h.mode() == 1) { // VALID BED
+			TilePos sp = new TilePos(MathHelper.floor(h.x()), MathHelper.floor(h.y()), MathHelper.floor(h.z()));
+			loadChunk(w, sp.x, sp.z);
+			pos = Player.getValidBedSpawnCoordinates(w, sp);
+		}
+		if (pos == null) { // SPAWN POINT
+			TilePos ws = w.getSpawnPoint();
+			loadChunk(w, ws.x, ws.z);
+			int ty = w.findTopSolidBlock(ws.x, ws.z);
+			if (ty > 0) pos = new TilePos(ws.x, ty, ws.z);
+		}
+		return pos == null ? null : new double[]{pos.x + 0.5, pos.y + 0.1, pos.z + 0.5};
+	}
+
+	private static boolean travel(Player p, Hop h) {
+		if (p.dimension != h.dim()) {
+			((IDimensionHop) p).potions$hop(h);
+			return true;
+		}
+		double[] d = destination(p.world, h);
+		if (d == null) return false;
+		p.moveTo(d[0], d[1], d[2], p.yRot, p.xRot);
+		if (p instanceof ITeleportSync s) s.potions$syncTeleport();
+		return true;
+	}
+
+	private static void startPopping(Player p) {
+		if (POPPING_ORIGIN.containsKey(p)) return;
+		int bedDim = ((ISomnia) p).potions$getBedlessDim();
+		int dim = bedDim >= 0 ? bedDim : 0;
+		TilePos sp = p.getPlayerSpawnPoint();
+		Hop h = (bedDim >= 0 && sp != null) ? new Hop(dim, 0, sp.x + 0.5, sp.y + 0.1, sp.z + 0.5)
+			: sp != null ? new Hop(dim, 1, sp.x, sp.y, sp.z)
+			: new Hop(dim, 2, 0, 0, 0);
+
+		POPPING_ORIGIN.put(p, new double[]{p.x, p.y, p.z, p.yRot, p.xRot, p.dimension});
+		if (!travel(p, h)) { POPPING_ORIGIN.remove(p); return; }
+		p.fallDistance = 0.0F;
+		p.world.playSoundAtEntity(null, p, REPOSITION_SOUND, 1.0F, 1.0F);
+		ModEffects.give(p, POPPING, POPPING_DURATION, 1);
+	}
+
+	public static void finishPopping(Player p) {
+		double[] o = POPPING_ORIGIN.remove(p);
+		if (o == null) return;
+		travel(p, new Hop((int) o[5], 0, o[0], o[1], o[2]));
+		p.fallDistance = 0.0F;
+		p.world.playSoundAtEntity(null, p, REPOSITION_SOUND, 1.0F, 1.0F);
 	}
 }

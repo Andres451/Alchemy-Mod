@@ -21,12 +21,15 @@
     "LightmapHelperMixin",
     "WorldRendererMixinReach",
     "WorldRendererMixinAstral",
-    "PlayerInputMixinAstral"
+    "PlayerInputMixinAstral",
+    "MinecraftMixinPopping",
+    "PlayerLocalMixinHop"
   ],
   "server": [
     "PlayerServerMixinPotionsScreens",
     "PlayerServerMixinSomnia",
     "PacketHandlerServerMixinReach",
-    "PlayerServerMixinTeleport"
+    "PlayerServerMixinTeleport",
+    "PlayerServerMixinHop"
   ]
 }
