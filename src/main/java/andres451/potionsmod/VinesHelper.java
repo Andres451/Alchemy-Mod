@@ -33,6 +33,9 @@ public class VinesHelper {
 	private static final String[] UNIVERSAL_AXES = {"TOOL_AXE_PHOENIX", "TOOL_AXE_VALKYRIE"};
 	private static final String[] UNIVERSAL_PICKAXES = {"TOOL_PICKAXE_PHOENIX", "TOOL_PICKAXE_VALKYRIE"};
 
+	private static final String STARDEW_BLOCKS = "luke.stardew.blocks.StardewBlocks";
+	private static final String[] STARDEW_LOGS = {"LOG_APPLE", "LOG_APPLE_GOLDEN"};
+
 	private static boolean ready = false;
 	private static final Map<Block<?>, String> oreFamily = new HashMap<>();
 	private static final Set<Block<?>> aetherBlocks = new HashSet<>();
@@ -112,6 +115,14 @@ public class VinesHelper {
 		}
 		aetherUniversal(universalAxes, UNIVERSAL_AXES);
 		aetherUniversal(universalPickaxes, UNIVERSAL_PICKAXES);
+
+		if (FabricLoader.getInstance().isModLoaded("stardew")) {
+			for (String name : STARDEW_LOGS) {
+				if (field(STARDEW_BLOCKS, name) instanceof Block<?>) {
+					PotionsMod.LOGGER.info("Potions.Vines: Stardew log {}", name);
+				}
+			}
+		}
 	}
 
 	// AETHER AND VANILLA TOOLS ONLY WORK IN THEIR DIMENSIONS MINUS UNIVERSAL TOOLS
