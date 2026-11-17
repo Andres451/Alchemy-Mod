@@ -22,7 +22,7 @@ public abstract class PacketHandlerServerMixinReach {
 			target = "Lnet/minecraft/core/player/gamemode/Gamemode;getBlockReachDistance()F"))
 	private float potions$blockReach(Gamemode gamemode) {
 		float reach = gamemode.getBlockReachDistance();
-		if (ModEffects.has(playerEntity, ModEffects.REACH)) return reach * 2.0F;
+		if (ModEffects.has(playerEntity, ModEffects.REACH)) return reach * 5.0F;
 		return reach;
 	}
 
@@ -31,7 +31,7 @@ public abstract class PacketHandlerServerMixinReach {
 			target = "Lnet/minecraft/core/player/gamemode/Gamemode;getEntityReachDistance()F"))
 	private float potions$entityReach(Gamemode gamemode) {
 		float reach = gamemode.getEntityReachDistance();
-		if (ModEffects.has(playerEntity, ModEffects.REACH)) return reach * 2.0F;
+		if (ModEffects.has(playerEntity, ModEffects.REACH)) return reach * 5.0F;
 		return reach;
 	}
 }

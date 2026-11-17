@@ -19,7 +19,7 @@ public abstract class LightmapHelperMixin {
 	@ModifyVariable(method = "applyGamma", at = @At("HEAD"), argsOnly = true, ordinal = 1)
 	private float potions$nightVision(float gamma) {
 		if (mc.thePlayer != null && ModEffects.has(mc.thePlayer, ModEffects.NIGHT_VISION)) {
-			return Math.max(gamma, 0.8F);
+			return Math.max(gamma, 3.00F);
 		}
 		return gamma;
 	}
