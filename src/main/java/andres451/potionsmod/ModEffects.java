@@ -122,8 +122,13 @@ public class ModEffects {
 		}
 	}.setDefaultDuration(POPPING_DURATION);
 
-	public static final Effect[] ALL = { REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED, RESISTANCE, SMALL, FLIGHT, NIGHT_VISION,
-		INVISIBLE, INVENTORY, SOMNIA, REACH, REPOSITION, ASTRAL, POPPING };
+	public static final Effect VINES = simple("vines", VINES_DURATION);
+
+	public static final Effect[] ALL = {
+		REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED,
+		RESISTANCE, SMALL, FLIGHT, NIGHT_VISION,
+		INVISIBLE, INVENTORY, SOMNIA, REACH,
+		REPOSITION, ASTRAL, POPPING, VINES };
 
 	public static void init() {
 		for (Effect e : ALL) {

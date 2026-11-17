@@ -10,7 +10,8 @@
     "WorldMixin",
     "MobPathfinderMixin",
     "PlayerMixinPotionsScreens",
-    "PlayerMixinSomnia"
+    "PlayerMixinSomnia",
+    "ItemStackMixinVines"
   ],
   "client": [
     "EntityRendererDispatcherMixin",

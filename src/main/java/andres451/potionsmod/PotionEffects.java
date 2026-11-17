@@ -29,6 +29,7 @@ public class PotionEffects {
 
 	public static final int REACH_DURATION = 1200;
 	public static final int REPOSITION_DURATION = 60;
+	public static final int VINES_DURATION = 1200;
 
 	public static final int ASTRAL_DURATION = 400;
 	public static final int POPPING_DURATION = 200;
@@ -47,6 +48,7 @@ public class PotionEffects {
 			case "magenta": ModEffects.give(player, INVENTORY, INVENTORY_DURATION, 1);break;
 			case "pink":    ModEffects.give(player, SOMNIA, SOMNIA_DURATION, 1); break;
 			case "lightmagenta": ModEffects.give(player, REACH, REACH_DURATION, 1); break;
+			case "lightcyan": ModEffects.give(player, VINES, VINES_DURATION, 1); break;
 			case "ultramarine": startAstral(player); break;
 			case "black": startReposition(player); break;
 			case "chartreuse": startPopping(player); break;

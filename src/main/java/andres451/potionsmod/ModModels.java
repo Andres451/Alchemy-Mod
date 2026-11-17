@@ -55,6 +55,7 @@ public class ModModels {
 		addEffectRenderer(ModEffects.REPOSITION, "reposition.png");
 		addEffectRenderer(ModEffects.ASTRAL, "astral.png");
 		addEffectRenderer(ModEffects.POPPING, "popping.png");
+		addEffectRenderer(ModEffects.VINES, "vines.png");
 	}
 
 	private static void addEffectRenderer(Effect effect, String iconFile) {
@@ -64,11 +65,6 @@ public class ModModels {
 
 	public static @NotNull ItemModelStandard makeModel(@NotNull final Item item, @NotNull final String textureValue) {
 		return setIcon(new ItemModelStandard(item, null), NamespaceID.getTemp(MOD_ID, "item/" + textureValue));
-	}
-
-	public static <T extends ItemModelStandard> @NotNull T setIcon(@NotNull final T model, @NotNull final String texture) {
-		model.icon = TextureRegistry.getTexture(texture);
-		return model;
 	}
 
 	public static <T extends ItemModelStandard> @NotNull T setIcon(@NotNull final T model, @NotNull final NamespaceID texture) {

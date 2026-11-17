@@ -30,6 +30,8 @@ item.potionsmod.jar_ultramarine.name=Astral Potion
 item.potionsmod.jar_ultramarine.desc=Spectate your surroundings for a short time before going back to your body.
 item.potionsmod.jar_chartreuse.name=Recall Potion
 item.potionsmod.jar_chartreuse.desc=Sends you back home, then returns you to your current position.
+item.potionsmod.jar_lightcyan.name=Vines Potion
+item.potionsmod.jar_lightcyan.desc=Cut entire ore veins and trees from one block.
 
 effect.potionsmod.regen.name=Healing
 effect.potionsmod.damage_boost.name=Damage
@@ -46,6 +48,7 @@ effect.potionsmod.reach.name=Reach
 effect.potionsmod.reposition.name=Warp
 effect.potionsmod.astral.name=Astral
 effect.potionsmod.popping.name=Recall
+effect.potionsmod.vines.name=Vines
 
 potionsmod.gui.alchemy_table.title=Alchemy Table
 container.potionsmod.alchemy_table.name=Alchemy Table
