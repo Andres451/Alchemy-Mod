@@ -102,12 +102,12 @@ public class AlchemyRecipes {
 		triple(mining, resistance, vision, somnia, milk);
 
 		pair(any(Blocks.RUBYGLASS_GROWTH), size, damage, reach, milk);
+		pair(any(Blocks.ALGAE), lapsus, healing, vines, milk);
 		pair(inkSack, flying, speed, reposition, milk);
-		pair(any(Blocks.ALGAE), healing, lapsus, vines, milk);
 
-		pair(any(Blocks.SOUL_CATCHER), flying, vision, astral, acid);
 		//TODO: pair(blocks.spinifex, tool, size, crop, acid);
-		pair(any(Items.FEATHER_CHICKEN), resistance, lapsus, popping, acid);
+		pair(any(Items.FEATHER_CHICKEN), lapsus, resistance, popping, acid);
+		pair(any(Blocks.SOUL_CATCHER), flying, vision, astral, acid);
 	}
 
 	public static void apply(ItemStack[] slots, Recipe r) {
