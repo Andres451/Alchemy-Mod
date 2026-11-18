@@ -12,7 +12,8 @@
     "PlayerMixinPotionsScreens",
     "PlayerMixinSomnia",
     "ItemStackMixinVines",
-    "BlockLogicFarmlandMixinFarm"
+    "BlockLogicFarmlandMixinFarm",
+    "BlockLogicFlowerMixinNoWater"
   ],
   "client": [
     "EntityRendererDispatcherMixin",
