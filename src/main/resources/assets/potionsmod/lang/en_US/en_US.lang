@@ -33,7 +33,7 @@ item.potionsmod.jar_chartreuse.desc=Sends you back home, then returns you to you
 item.potionsmod.jar_lightcyan.name=Veins Potion
 item.potionsmod.jar_lightcyan.desc=Cut entire ore veins and trees from one block.
 item.potionsmod.jar_bronze.name=Farm Potion
-item.potionsmod.jar_bronze.desc=Break entire crop farms and grows every one in your step.
+item.potionsmod.jar_bronze.desc=Harvest entire fields from one crop. Nearby plants grow as you approach them.
 
 effect.potionsmod.regen.name=Healing
 effect.potionsmod.damage_boost.name=Damage
