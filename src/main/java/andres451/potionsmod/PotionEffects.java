@@ -29,7 +29,7 @@ public class PotionEffects {
 	public static final int SOMNIA_DURATION = 60;
 
 	public static final int REACH_DURATION = 1200;
-	public static final int REPOSITION_DURATION = 60;
+	public static final int REPOSITION_DURATION = 40;
 	public static final int VINES_DURATION = 1200;
 
 	public static final int ASTRAL_DURATION = 400;
