@@ -4,7 +4,7 @@ Potion system for BTA
 
 ## Features
 - Alchemy Table to make the new potions
-- 10 potions with new effects
+- 16 potions with new effects
 
 ## Install
 
@@ -17,6 +17,11 @@ Potion system for BTA
 4. Install Catalyst Effects 3.0.1 or newer.
 
 5. Put the Alchemy-Mod JAR in the instance's mods folder.
+
+### Note: 
+To display effect durations outside the inventory:
+1. Open **(your-instance)**/minecraft/options.txt
+2. Change **catalyst-effects.displayEffectsIn:INVENTORY** to **catalyst-effects.displayEffectsIn:BOTH**
 
 ## Potions list
 
@@ -32,8 +37,13 @@ Potion system for BTA
 8. Lapsus: Complete invisibility, armor included, enemies ignore you, even if they saw you before.
 9. Fly: Allows you to fly, as if you were in creative, but slower and without crossing blocks.
 10. Somnia: Makes you sleep, anywhere, in any dimension, and sets your spawn point there.
+11. Reach: Increases interaction distance 5 times.
+12. Veins: Cut entire ore veins and trees from one block.
+13. Warp: Teleports you to where you were looking when you drank it after 2 seconds.
+14. Farm: Harvest entire fields from one crop. Nearby plants grow as you approach them.
+15. Recall: Sends you back to your current spawn point, after some seconds returns you to your current position.
+16. Astral: Spectate your surroundings for a short time before going back to your body, your original body can still interact.
 
 ## Current Recipes
   
-<img width="1010" height="578" alt="RECIPES_" src="https://github.com/user-attachments/assets/c3769a7c-793a-4530-921b-dd8708938ece" />
-
+<img width="1892" height="740" alt="recipes" src="https://github.com/user-attachments/assets/d7b98268-7f60-48a6-9917-9cde145d00b3" />
