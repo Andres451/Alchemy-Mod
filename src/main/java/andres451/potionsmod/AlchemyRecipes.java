@@ -77,6 +77,7 @@ public class AlchemyRecipes {
 		Item astral = ModItems.jar("ultramarine");
 		Item popping = ModItems.jar("chartreuse");
 		Item vines = ModItems.jar("lightcyan");
+		Item farm = ModItems.jar("bronze");
 
 		Ingredient boneMeal = meta(Items.DYE, DyeColor.WHITE.itemMeta);
 		Ingredient lapis = meta(Items.DYE, DyeColor.BLUE.itemMeta);
@@ -105,7 +106,7 @@ public class AlchemyRecipes {
 		pair(any(Blocks.ALGAE), lapsus, healing, vines, milk);
 		pair(inkSack, flying, speed, reposition, milk);
 
-		//TODO: pair(blocks.spinifex, tool, size, crop, acid);
+		pair(any(Blocks.DEADBUSH), size, mining, farm, acid);
 		pair(any(Items.FEATHER_CHICKEN), lapsus, resistance, popping, acid);
 		pair(any(Blocks.SOUL_CATCHER), flying, vision, astral, acid);
 	}

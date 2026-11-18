@@ -56,6 +56,7 @@ public class ModModels {
 		addEffectRenderer(ModEffects.ASTRAL, "astral.png");
 		addEffectRenderer(ModEffects.POPPING, "popping.png");
 		addEffectRenderer(ModEffects.VINES, "vines.png");
+		addEffectRenderer(ModEffects.FARM, "farm.png");
 	}
 
 	private static void addEffectRenderer(Effect effect, String iconFile) {

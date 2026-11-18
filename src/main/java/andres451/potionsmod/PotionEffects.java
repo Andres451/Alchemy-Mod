@@ -33,6 +33,7 @@ public class PotionEffects {
 
 	public static final int ASTRAL_DURATION = 400;
 	public static final int POPPING_DURATION = 200;
+	public static final int FARM_DURATION = 1200;
 
 	public static void apply(String color, Player player) {
 		switch (color) {
@@ -49,6 +50,7 @@ public class PotionEffects {
 			case "pink":    ModEffects.give(player, SOMNIA, SOMNIA_DURATION, 1); break;
 			case "lightmagenta": ModEffects.give(player, REACH, REACH_DURATION, 1); break;
 			case "lightcyan": ModEffects.give(player, VINES, VINES_DURATION, 1); break;
+			case "bronze": ModEffects.give(player, FARM, FARM_DURATION, 1); break;
 			case "ultramarine": startAstral(player); break;
 			case "black": startReposition(player); break;
 			case "chartreuse": startPopping(player); break;

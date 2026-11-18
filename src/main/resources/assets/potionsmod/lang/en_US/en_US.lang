@@ -32,6 +32,8 @@ item.potionsmod.jar_chartreuse.name=Recall Potion
 item.potionsmod.jar_chartreuse.desc=Sends you back home, then returns you to your current position.
 item.potionsmod.jar_lightcyan.name=Veins Potion
 item.potionsmod.jar_lightcyan.desc=Cut entire ore veins and trees from one block.
+item.potionsmod.jar_bronze.name=Farm Potion
+item.potionsmod.jar_bronze.desc=Break entire crop farms and grows every one in your step.
 
 effect.potionsmod.regen.name=Healing
 effect.potionsmod.damage_boost.name=Damage
@@ -49,6 +51,7 @@ effect.potionsmod.reposition.name=Warp
 effect.potionsmod.astral.name=Astral
 effect.potionsmod.popping.name=Recall
 effect.potionsmod.vines.name=Veins
+effect.potionsmod.farm.name=Farm
 
 potionsmod.gui.alchemy_table.title=Alchemy Table
 container.potionsmod.alchemy_table.name=Alchemy Table

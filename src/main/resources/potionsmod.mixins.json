@@ -11,7 +11,8 @@
     "MobPathfinderMixin",
     "PlayerMixinPotionsScreens",
     "PlayerMixinSomnia",
-    "ItemStackMixinVines"
+    "ItemStackMixinVines",
+    "BlockLogicFarmlandMixinFarm"
   ],
   "client": [
     "EntityRendererDispatcherMixin",
@@ -24,13 +25,15 @@
     "WorldRendererMixinAstral",
     "PlayerInputMixinAstral",
     "MinecraftMixinPopping",
-    "PlayerLocalMixinHop"
+    "PlayerLocalMixinHop",
+    "PlayerControllerSPMixinFarm"
   ],
   "server": [
     "PlayerServerMixinPotionsScreens",
     "PlayerServerMixinSomnia",
     "PacketHandlerServerMixinReach",
     "PlayerServerMixinTeleport",
-    "PlayerServerMixinHop"
+    "PlayerServerMixinHop",
+    "ServerPlayerControllerMixinFarm"
   ]
 }

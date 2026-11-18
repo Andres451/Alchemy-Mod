@@ -124,11 +124,21 @@ public class ModEffects {
 
 	public static final Effect VINES = simple("vines", VINES_DURATION);
 
+	public static final Effect FARM = new Effect(
+		"effect." + MOD_ID + ".farm", MOD_ID + ":farm",
+		Collections.emptyList(), EffectTimeType.RESET, 1
+	) {
+		@Override
+		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
+			if (container.getParent() instanceof Player p) FarmHelper.tick(p, stack.getTickCount());
+		}
+	}.setDefaultDuration(FARM_DURATION);
+
 	public static final Effect[] ALL = {
 		REGEN, SPEED, DAMAGE_BOOST, DIG_SPEED,
 		RESISTANCE, SMALL, FLIGHT, NIGHT_VISION,
 		INVISIBLE, INVENTORY, SOMNIA, REACH,
-		REPOSITION, ASTRAL, POPPING, VINES };
+		REPOSITION, ASTRAL, POPPING, VINES, FARM };
 
 	public static void init() {
 		for (Effect e : ALL) {

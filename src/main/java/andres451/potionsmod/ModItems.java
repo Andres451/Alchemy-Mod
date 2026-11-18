@@ -9,10 +9,10 @@ import turniplabs.halplibe.helper.creativeInventory.CreativeInventoryPlacement;
 
 public class ModItems {
 	public static final String[] JAR_COLORS = {
-		"red", "green", "blue", "cyan", "lime",
-		"orange", "purple", "skyblue", "white",
-		"yellow", "magenta", "pink", "lightmagenta",
-		"black", "ultramarine", "chartreuse", "lightcyan"
+		"red", "green", "blue", "cyan", "lime", "orange",
+		"purple", "skyblue", "white", "yellow", "magenta",
+		"pink", "lightmagenta", "black", "ultramarine",
+		"chartreuse", "lightcyan", "bronze"
 	};
 	public static Item[] jars = new Item[JAR_COLORS.length];
 
