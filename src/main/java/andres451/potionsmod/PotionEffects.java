@@ -8,6 +8,7 @@ import net.minecraft.core.util.helper.MathHelper;
 import net.minecraft.core.util.phys.HitResult;
 import net.minecraft.core.world.World;
 import net.minecraft.core.world.chunk.provider.ChunkProvider;
+import net.minecraft.core.world.pos.ChunkPos;
 import net.minecraft.core.world.pos.TilePos;
 
 public class PotionEffects {
@@ -113,8 +114,9 @@ public class PotionEffects {
 
 	private static void loadChunk(World w, int x, int z) {
 		ChunkProvider cp = w.getChunkProvider();
-		cp.setCurrentChunkOver(x >> 4, z >> 4);
-		cp.prepareChunk(x >> 4, z >> 4);
+		ChunkPos pos = new ChunkPos(x >> 4, z >> 4);
+		cp.setCurrentChunkOver(pos);
+		cp.prepareChunk(pos, true);
 	}
 
 	public static double[] destination(World w, Hop h) {
