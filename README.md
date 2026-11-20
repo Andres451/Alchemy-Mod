@@ -20,8 +20,7 @@ Potion system for BTA
 5. Put the Alchemy-Mod JAR in the instance's mods folder.
 
 ### Note: 
-You can now choose where effect icons are displayed in
-Options -> Catalyst -> Display Effects In
+You can now choose where effect icons are displayed in `Options -> Catalyst -> Display Effects In`
 
 ## Potions list
 
