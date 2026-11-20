@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
-import static andres451.potionsmod.Constants.NIGHT_VISION_GAMMA;
+import static andres451.potionsmod.Config.*;
 
 @Environment(EnvType.CLIENT)
 @Mixin(value = LightmapHelper.class, remap = false)

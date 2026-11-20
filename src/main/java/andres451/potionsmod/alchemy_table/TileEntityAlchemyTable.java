@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import net.minecraft.core.entity.Entity;
 import net.minecraft.core.sound.SoundCategory;
 
-import static andres451.potionsmod.Constants.COOKING_DURATION;
+import static andres451.potionsmod.Config.*;
 
 public class TileEntityAlchemyTable extends TileEntity implements Container {
 	protected ItemStack[] slots = new ItemStack[5];

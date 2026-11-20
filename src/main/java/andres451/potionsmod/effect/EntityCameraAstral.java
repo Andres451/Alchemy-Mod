@@ -9,6 +9,7 @@ import net.minecraft.core.entity.Mob;
 import net.minecraft.core.util.helper.MathHelper;
 
 import static andres451.potionsmod.Constants.*;
+import static andres451.potionsmod.Config.*;
 
 @Environment(EnvType.CLIENT)
 public class EntityCameraAstral extends EntityCameraFirstPerson {

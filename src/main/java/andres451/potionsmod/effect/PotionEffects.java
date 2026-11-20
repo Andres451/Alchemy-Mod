@@ -6,7 +6,7 @@ import andres451.potionsmod.d_interface.ITeleportSync;
 import andres451.potionsmod.registry.ModEffects;
 import net.minecraft.core.entity.player.Player;
 
-import static andres451.potionsmod.Constants.*;
+import static andres451.potionsmod.Config.*;
 import static andres451.potionsmod.registry.ModEffects.*;
 
 import net.minecraft.core.util.helper.MathHelper;

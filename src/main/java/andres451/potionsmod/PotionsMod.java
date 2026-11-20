@@ -24,6 +24,7 @@ public class PotionsMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		Config.load();
 		Key key = Key.of(MOD_ID);
 		CommonEvents.BEFORE_GAME_START.listen(key, this::beforeGameStart);
 		CommonEvents.AFTER_GAME_START.listen(key, this::afterGameStart);

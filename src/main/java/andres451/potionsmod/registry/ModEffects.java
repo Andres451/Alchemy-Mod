@@ -1,6 +1,7 @@
 package andres451.potionsmod.registry;
 
 import static andres451.potionsmod.Constants.*;
+import static andres451.potionsmod.Config.*;
 import static andres451.potionsmod.PotionsMod.MOD_ID;
 
 import java.util.Collections;

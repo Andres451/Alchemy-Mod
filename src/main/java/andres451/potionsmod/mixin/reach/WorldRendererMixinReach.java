@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import static andres451.potionsmod.Constants.REACH_MULTIPLIER;
+import static andres451.potionsmod.Config.*;
 
 @Environment(EnvType.CLIENT)
 @Mixin(value = WorldRenderer.class, remap = false)

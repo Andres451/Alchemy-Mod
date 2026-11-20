@@ -2,8 +2,8 @@
 	"schemaVersion": 1,
 	"id": "potionsmod",
 	"version": "${version}",
-	"name": "Alchemy Mod",
-	"description": "A humble potion system for BTA.",
+	"name": "Alchemy",
+	"description": "New potion system for BTA.",
 	"authors": [
 		"Andres451"
 	],

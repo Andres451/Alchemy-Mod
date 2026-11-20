@@ -24,6 +24,7 @@ import net.minecraft.core.world.pos.TilePos;
 import net.minecraft.core.world.pos.TilePosc;
 
 import static andres451.potionsmod.Constants.*;
+import static andres451.potionsmod.Config.*;
 
 public class VinesHelper {
 	private static final int MAX = VINES_MAX_BLOCKS;
