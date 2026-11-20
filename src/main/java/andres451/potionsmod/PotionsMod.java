@@ -1,5 +1,11 @@
 package andres451.potionsmod;
 
+import andres451.potionsmod.alchemy_table.AlchemyRecipes;
+import andres451.potionsmod.alchemy_table.TileEntityAlchemyTable;
+import andres451.potionsmod.registry.ModBlocks;
+import andres451.potionsmod.registry.ModEffects;
+import andres451.potionsmod.registry.ModItems;
+import andres451.potionsmod.registry.ModRecipes;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

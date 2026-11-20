@@ -1,5 +1,6 @@
 package andres451.potionsmod;
 
+import andres451.potionsmod.registry.ModModels;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

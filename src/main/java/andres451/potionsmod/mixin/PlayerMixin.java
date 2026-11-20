@@ -1,6 +1,6 @@
 package andres451.potionsmod.mixin;
 
-import andres451.potionsmod.ModEffects;
+import andres451.potionsmod.registry.ModEffects;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.data.gamerule.GameRule;
 import net.minecraft.core.entity.Entity;
@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import static andres451.potionsmod.Constants.*;
 
 @Mixin(value = Player.class, remap = false)
 public abstract class PlayerMixin {
@@ -23,13 +24,13 @@ public abstract class PlayerMixin {
 		index = 1)
 	private int boostDamage(int damage) {
 		Player self = (Player) (Object) this;
-		return ModEffects.has(self, ModEffects.DAMAGE_BOOST) ? ModEffects.scale(damage, 2) : damage;
+		return ModEffects.has(self, ModEffects.DAMAGE_BOOST) ? ModEffects.scale(damage, DAMAGE_BOOST_MULTIPLIER) : damage;
 	}
 
 	@ModifyVariable(method = "hurt", at = @At("HEAD"), argsOnly = true, ordinal = 0)
 	private int reduceDamage(int damage) {
 		if (damage > 0 && ModEffects.has((Player) (Object) this, ModEffects.RESISTANCE)) {
-			return ModEffects.scale(damage, 0.6);
+			return ModEffects.scale(damage, INCOMING_DAMAGE_MULTIPLIER);
 		}
 		return damage;
 	}
@@ -70,7 +71,7 @@ public abstract class PlayerMixin {
 	@Inject(method = "getCurrentPlayerStrVsBlock", at = @At("RETURN"), cancellable = true)
 	private void digSpeed(Block<?> block, CallbackInfoReturnable<Float> cir) {
 		if (ModEffects.has((Player) (Object) this, ModEffects.DIG_SPEED)) {
-			cir.setReturnValue(cir.getReturnValue() * 2.5F);
+			cir.setReturnValue(cir.getReturnValue() * DIG_SPEED_MULTIPLIER);
 		}
 	}
 
@@ -81,8 +82,8 @@ public abstract class PlayerMixin {
 		if (self.isPlayerSleeping()) return;
 		if (ModEffects.has(self, ModEffects.SMALL)) {
 			this.isDwarf = true;
-			self.bbWidth = 0.6F;
-			self.bbHeight = self.isSneaking() ? 0.5F : 0.8F;
+			self.bbWidth = SMALL_WIDTH;
+			self.bbHeight = self.isSneaking() ? SMALL_HEIGHT_SNEAKING : SMALL_HEIGHT;
 			self.setBounds();
 		}
 	}
