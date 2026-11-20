@@ -31,7 +31,9 @@
     "astral.PlayerInputMixinAstral",
     "teleport.MinecraftMixinPopping",
     "teleport.PlayerLocalMixinHop",
-    "farm.PlayerControllerSPMixinFarm"
+    "farm.PlayerControllerSPMixinFarm",
+    "catalyst.CatalystOptionsMixin",
+    "catalyst.CatalystEffectsClientMixin"
   ],
   "server": [
     "gui.PlayerServerMixinPotionsScreens",
