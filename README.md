@@ -5,6 +5,7 @@ Potion system for BTA
 ## Features
 - Alchemy Table to make the new potions
 - 16 potions with new effects
+- Configuration file to edit potion values
 
 ## Install
 
@@ -19,9 +20,8 @@ Potion system for BTA
 5. Put the Alchemy-Mod JAR in the instance's mods folder.
 
 ### Note: 
-To display effect durations outside the inventory:
-1. Open **(your-instance)**/minecraft/options.txt
-2. Change **catalyst-effects.displayEffectsIn:INVENTORY** to **catalyst-effects.displayEffectsIn:BOTH**
+You can now choose where effect icons are displayed in
+Options -> Catalyst -> Display Effects In
 
 ## Potions list
 
