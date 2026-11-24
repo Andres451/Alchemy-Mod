@@ -26,6 +26,7 @@ public class GuidebookPagePotions extends GuidebookPage {
 	private static final int ROW_STEP = 28;
 	private static final int BASE_X = 16, A_X = 36, B_X = 56, BUCKET_X = 76, ARROW_X = 98, RESULT_X = 126;
 	private static final long CYCLE_MS = 1500L;
+	private static final long HALF_MS = CYCLE_MS / 2;
 
 	private final Minecraft mc = Minecraft.getMinecraft();
 	private final ItemElement itemElement = new ItemElement(mc);
@@ -33,21 +34,23 @@ public class GuidebookPagePotions extends GuidebookPage {
 
 	private final List<List<AlchemyRecipes.Recipe>> rows;
 	private final List<SlotGuidebook> slots = new ArrayList<>();
-	private long builtFrame = -1;
+	private long builtTick = -1;
 
 	public GuidebookPagePotions(GuidebookSection section, List<List<AlchemyRecipes.Recipe>> rows) {
 		super(section);
 		this.rows = rows;
 	}
 
+
 	private void refresh() {
-		long frame = System.currentTimeMillis() / CYCLE_MS;
-		if (frame == builtFrame) return;
-		builtFrame = frame;
+		long tick = System.currentTimeMillis() / HALF_MS;
+		if (tick == builtTick) return;
+		builtTick = tick;
 		slots.clear();
 		for (int i = 0; i < rows.size(); i++) {
 			List<AlchemyRecipes.Recipe> group = rows.get(i);
-			AlchemyRecipes.Recipe r = group.get((int) (frame % group.size()));
+			long step = AlchemyRecipes.isRevert(group.get(0)) ? tick : tick / 2;
+			AlchemyRecipes.Recipe r = group.get((int) (step % group.size()));
 			int py = ROWS_Y + i * ROW_STEP;
 			addSlot(new ItemStack(r.base()), BASE_X, py);
 			addSlot(r.a().toStack(), A_X, py);

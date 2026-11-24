@@ -125,10 +125,10 @@ public class AlchemyRecipes {
 			Item dense = ModItems.jar(c, PotionVariant.DENSE);
 
 			add(normal, any(antidote), greenDye, water, diluted);
-			add(normal, any(normal), brownDye, water, dense);
+			add(normal, any(normal), brownDye, acid, dense);
 
-			add(diluted, any(antidote), boneMeal, water, normal);
-			add(dense, any(antidote), boneMeal, water, normal);
+			add(diluted, any(antidote), boneMeal, milk, normal);
+			add(dense, any(antidote), boneMeal, milk, normal);
 		}
 	}
 
@@ -194,5 +194,10 @@ public class AlchemyRecipes {
 
 	private static PotionVariant variantOfItem(Item item) {
 		return item instanceof ModPotionItem m ? m.variant() : PotionVariant.NORMAL;
+	}
+
+	public static boolean isRevert(Recipe r) {
+		return variantOfItem(r.result()) == PotionVariant.NORMAL
+			&& variantOfItem(r.base()) != PotionVariant.NORMAL;
 	}
 }
