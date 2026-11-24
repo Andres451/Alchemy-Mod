@@ -22,7 +22,8 @@ public abstract class WorldRendererMixinReach {
 	private float potions$blockReach(Gamemode gamemode) {
 		float reach = gamemode.getBlockReachDistance();
 		Minecraft mc = Minecraft.getMinecraft();
-		if (mc.thePlayer != null && ModEffects.has(mc.thePlayer, ModEffects.REACH)) return reach * REACH_MULTIPLIER;
+		if (mc.thePlayer != null && ModEffects.has(mc.thePlayer, ModEffects.REACH))
+			return reach * (float) ModEffects.bonus(mc.thePlayer, ModEffects.REACH, REACH_MULTIPLIER);
 		return reach;
 	}
 
@@ -32,7 +33,8 @@ public abstract class WorldRendererMixinReach {
 	private float potions$entityReach(Gamemode gamemode) {
 		float reach = gamemode.getEntityReachDistance();
 		Minecraft mc = Minecraft.getMinecraft();
-		if (mc.thePlayer != null && ModEffects.has(mc.thePlayer, ModEffects.REACH)) return reach * REACH_MULTIPLIER;
+		if (mc.thePlayer != null && ModEffects.has(mc.thePlayer, ModEffects.REACH))
+			return reach * (float) ModEffects.bonus(mc.thePlayer, ModEffects.REACH, REACH_MULTIPLIER);
 		return reach;
 	}
 }

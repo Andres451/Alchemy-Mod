@@ -25,13 +25,15 @@ public abstract class PlayerMixin {
 		index = 1)
 	private int boostDamage(int damage) {
 		Player self = (Player) (Object) this;
-		return ModEffects.has(self, ModEffects.DAMAGE_BOOST) ? ModEffects.scale(damage, DAMAGE_BOOST_MULTIPLIER) : damage;
+		if (!ModEffects.has(self, ModEffects.DAMAGE_BOOST)) return damage;
+		return ModEffects.scale(damage, ModEffects.bonus(self, ModEffects.DAMAGE_BOOST, DAMAGE_BOOST_MULTIPLIER));
 	}
 
 	@ModifyVariable(method = "hurt", at = @At("HEAD"), argsOnly = true, ordinal = 0)
 	private int reduceDamage(int damage) {
-		if (damage > 0 && ModEffects.has((Player) (Object) this, ModEffects.RESISTANCE)) {
-			return ModEffects.scale(damage, INCOMING_DAMAGE_MULTIPLIER);
+		Player self = (Player) (Object) this;
+		if (damage > 0 && ModEffects.has(self, ModEffects.RESISTANCE)) {
+			return ModEffects.scale(damage, ModEffects.bonus(self, ModEffects.RESISTANCE, INCOMING_DAMAGE_MULTIPLIER));
 		}
 		return damage;
 	}
@@ -71,8 +73,9 @@ public abstract class PlayerMixin {
 
 	@Inject(method = "getCurrentPlayerStrVsBlock", at = @At("RETURN"), cancellable = true)
 	private void digSpeed(Block<?> block, CallbackInfoReturnable<Float> cir) {
-		if (ModEffects.has((Player) (Object) this, ModEffects.DIG_SPEED)) {
-			cir.setReturnValue(cir.getReturnValue() * DIG_SPEED_MULTIPLIER);
+		Player self = (Player) (Object) this;
+		if (ModEffects.has(self, ModEffects.DIG_SPEED)) {
+			cir.setReturnValue(cir.getReturnValue() * (float) ModEffects.bonus(self, ModEffects.DIG_SPEED, DIG_SPEED_MULTIPLIER));
 		}
 	}
 

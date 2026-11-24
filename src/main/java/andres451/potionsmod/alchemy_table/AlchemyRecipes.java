@@ -3,6 +3,7 @@ package andres451.potionsmod.alchemy_table;
 import java.util.ArrayList;
 import java.util.List;
 
+import andres451.potionsmod.PotionVariant;
 import andres451.potionsmod.PotionsMod;
 import andres451.potionsmod.registry.ModItems;
 import andres451.potionsmod.registry.ModPotionItem;
@@ -113,6 +114,22 @@ public class AlchemyRecipes {
 		pair(any(Blocks.DEADBUSH), size, mining, farm, acid);
 		pair(any(Items.FEATHER_CHICKEN), lapsus, resistance, popping, acid);
 		pair(any(Blocks.SOUL_CATCHER), flying, vision, astral, acid);
+
+		Ingredient greenDye = meta(Items.DYE, DyeColor.GREEN.itemMeta);
+		Ingredient brownDye = meta(Items.DYE, DyeColor.BROWN.itemMeta);
+
+		for (String c : ModItems.JAR_COLORS) {
+			if (c.equals("white")) continue;
+			Item normal = ModItems.jar(c);
+			Item diluted = ModItems.jar(c, PotionVariant.DILUTED);
+			Item dense = ModItems.jar(c, PotionVariant.DENSE);
+
+			add(normal, any(antidote), greenDye, water, diluted);
+			add(normal, any(normal), brownDye, water, dense);
+
+			add(diluted, any(antidote), boneMeal, water, normal);
+			add(dense, any(antidote), boneMeal, water, normal);
+		}
 	}
 
 	public static void apply(ItemStack[] slots, Recipe r) {
@@ -154,5 +171,28 @@ public class AlchemyRecipes {
 
 	public static boolean isBase(ItemStack s) {
 		return s != null && (s.getItem() == Items.JAR || s.getItem() instanceof ModPotionItem);
+	}
+
+	public static List<List<Recipe>> groupForGuidebook(List<Recipe> recipes) {
+		List<List<Recipe>> rows = new ArrayList<>();
+		List<Recipe> diluted = new ArrayList<>();
+		List<Recipe> dense = new ArrayList<>();
+		List<Recipe> revert = new ArrayList<>();
+		for (Recipe r : recipes) {
+			PotionVariant base = variantOfItem(r.base());
+			PotionVariant result = variantOfItem(r.result());
+			if (result == PotionVariant.NORMAL && base != PotionVariant.NORMAL) revert.add(r);
+			else if (result == PotionVariant.DILUTED) diluted.add(r);
+			else if (result == PotionVariant.DENSE) dense.add(r);
+			else rows.add(List.of(r));
+		}
+		if (!diluted.isEmpty()) rows.add(diluted);
+		if (!dense.isEmpty()) rows.add(dense);
+		if (!revert.isEmpty()) rows.add(revert);
+		return rows;
+	}
+
+	private static PotionVariant variantOfItem(Item item) {
+		return item instanceof ModPotionItem m ? m.variant() : PotionVariant.NORMAL;
 	}
 }

@@ -27,7 +27,6 @@ import static andres451.potionsmod.Constants.*;
 import static andres451.potionsmod.Config.*;
 
 public class VinesHelper {
-	private static final int MAX = VINES_MAX_BLOCKS;
 	private static final int SOUND_EVERY = 8;
 	private static final int[][] FACES = {
 		{1, 0, 0}, {-1, 0, 0}, {0, 1, 0}, {0, -1, 0}, {0, 0, 1}, {0, 0, -1}
@@ -154,7 +153,8 @@ public class VinesHelper {
 		if (!toolAllowed(held, aetherBlock, false)) return false;
 		if (!player.canHarvestBlock(block)) return false;
 
-		breakOres(world, player, family, findVein(world, family, origin));
+		int max = ModEffects.scaleCount(VINES_MAX_BLOCKS, ModEffects.strength(player, ModEffects.VINES));
+		breakOres(world, player, family, findVein(world, family, origin, max));
 		return false;
 	}
 
@@ -163,13 +163,13 @@ public class VinesHelper {
 	}
 
 	// BFS OVER 6 FACES
-	private static List<TilePos> findVein(World world, String family, TilePosc origin) {
+	private static List<TilePos> findVein(World world, String family, TilePosc origin, int max) {
 		List<TilePos> found = new ArrayList<>();
 		Set<Long> seen = new HashSet<>();
 		ArrayDeque<TilePos> queue = new ArrayDeque<>();
 		seen.add(key(origin.x(), origin.y(), origin.z()));
 		queue.add(new TilePos(origin.x(), origin.y(), origin.z()));
-		while (!queue.isEmpty() && found.size() < MAX) {
+		while (!queue.isEmpty() && found.size() < max) {
 			TilePos p = queue.poll();
 			for (int[] f : FACES) {
 				int nx = p.x + f[0], ny = p.y + f[1], nz = p.z + f[2];
@@ -178,7 +178,7 @@ public class VinesHelper {
 				if (!family.equals(oreFamily.get(world.getBlockType(n)))) continue;
 				found.add(n);
 				queue.add(n);
-				if (found.size() >= MAX) break;
+				if (found.size() >= max) break;
 			}
 		}
 		return found;

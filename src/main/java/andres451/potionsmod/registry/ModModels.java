@@ -35,7 +35,14 @@ public class ModModels {
 
 	public void initItemModels(ItemModelDispatcher dispatcher) {
 		for (int i = 0; i < ModItems.JAR_COLORS.length; i++) {
-			dispatcher.addDispatch(makeModel(ModItems.jars[i], "jar_" + ModItems.JAR_COLORS[i]));
+			String c = ModItems.JAR_COLORS[i];
+			dispatcher.addDispatch(makeModel(ModItems.jars[i], "jar_" + c));
+			if (ModItems.dilutedJars[i] != null) {
+				dispatcher.addDispatch(makeModel(ModItems.dilutedJars[i], "jar_" + c + "_diluted"));
+			}
+			if (ModItems.denseJars[i] != null) {
+				dispatcher.addDispatch(makeModel(ModItems.denseJars[i], "jar_" + c + "_dense"));
+			}
 		}
 	}
 

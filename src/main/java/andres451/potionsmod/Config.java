@@ -74,6 +74,10 @@ public final class Config {
 	// FARM
 	public static int FARM_DURATION, FARM_MAX_BLOCKS, FARM_BONEMEAL_RADIUS;
 
+	// VARIANTS
+	public static double DILUTED_DURATION_FACTOR, DILUTED_STRENGTH_FACTOR;
+	public static double DENSE_DURATION_FACTOR, DENSE_STRENGTH_FACTOR;
+
 
 	public static void load() {
 		Toml t = new Toml("Alchemy configuration - Durations are in SECONDS");
@@ -147,6 +151,12 @@ public final class Config {
 			.addEntry("max_blocks", 128)
 			.addEntry("bonemeal_radius", 1);
 
+		t.addCategory("Variants")
+			.addEntry("diluted_duration_factor", 2.0)
+			.addEntry("diluted_strength_factor", 0.5)
+			.addEntry("dense_duration_factor", 0.5)
+			.addEntry("dense_strength_factor", 1.5);
+
 		CFG = new TomlConfigHandler("alchemy", t);
 
 		COOKING_DURATION = secs("Alchemy table.cooking_duration");
@@ -198,6 +208,11 @@ public final class Config {
 		FARM_DURATION = secs("Farm.duration");
 		FARM_MAX_BLOCKS = CFG.getInt("Farm.max_blocks");
 		FARM_BONEMEAL_RADIUS = CFG.getInt("Farm.bonemeal_radius");
+
+		DILUTED_DURATION_FACTOR = CFG.getDouble("Variants.diluted_duration_factor");
+		DILUTED_STRENGTH_FACTOR = CFG.getDouble("Variants.diluted_strength_factor");
+		DENSE_DURATION_FACTOR = CFG.getDouble("Variants.dense_duration_factor");
+		DENSE_STRENGTH_FACTOR = CFG.getDouble("Variants.dense_strength_factor");
 	}
 
 	private static int secs(String path) {

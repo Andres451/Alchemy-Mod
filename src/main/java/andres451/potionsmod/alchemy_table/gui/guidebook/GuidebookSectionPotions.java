@@ -13,7 +13,7 @@ import net.minecraft.core.item.ItemStack;
 
 @Environment(EnvType.CLIENT)
 public class GuidebookSectionPotions extends SearchableGuidebookSection {
-	private static final int PER_PAGE = 6;
+	private static final int PER_PAGE = 7;
 
 	private final List<GuidebookPage> pages = new ArrayList<>();
 	private int builtFor = -1;
@@ -75,12 +75,13 @@ public class GuidebookSectionPotions extends SearchableGuidebookSection {
 
 	private List<GuidebookPage> buildPages(List<AlchemyRecipes.Recipe> recipes) {
 		List<GuidebookPage> out = new ArrayList<>();
-		if (recipes.isEmpty()) {
-			out.add(new GuidebookPagePotions(this, recipes));
+		List<List<AlchemyRecipes.Recipe>> rows = AlchemyRecipes.groupForGuidebook(recipes);
+		if (rows.isEmpty()) {
+			out.add(new GuidebookPagePotions(this, rows));
 			return out;
 		}
-		for (int i = 0; i < recipes.size(); i += PER_PAGE) {
-			out.add(new GuidebookPagePotions(this, new ArrayList<>(recipes.subList(i, Math.min(i + PER_PAGE, recipes.size())))));
+		for (int i = 0; i < rows.size(); i += PER_PAGE) {
+			out.add(new GuidebookPagePotions(this, new ArrayList<>(rows.subList(i, Math.min(i + PER_PAGE, rows.size())))));
 		}
 		return out;
 	}

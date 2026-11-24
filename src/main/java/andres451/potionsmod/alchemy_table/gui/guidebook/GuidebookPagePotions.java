@@ -22,23 +22,32 @@ import net.minecraft.core.item.Items;
 
 @Environment(EnvType.CLIENT)
 public class GuidebookPagePotions extends GuidebookPage {
-	private static final int TEXT = -12566464;
-	private static final int ROWS_Y = 28;
+	private static final int ROWS_Y = 9;
 	private static final int ROW_STEP = 28;
 	private static final int BASE_X = 16, A_X = 36, B_X = 56, BUCKET_X = 76, ARROW_X = 98, RESULT_X = 126;
+	private static final long CYCLE_MS = 1500L;
 
 	private final Minecraft mc = Minecraft.getMinecraft();
 	private final ItemElement itemElement = new ItemElement(mc);
 	private final TooltipElement tooltipElement = new TooltipElement(mc);
 
-	private final int recipeCount;
+	private final List<List<AlchemyRecipes.Recipe>> rows;
 	private final List<SlotGuidebook> slots = new ArrayList<>();
+	private long builtFrame = -1;
 
-	public GuidebookPagePotions(GuidebookSection section, List<AlchemyRecipes.Recipe> recipes) {
+	public GuidebookPagePotions(GuidebookSection section, List<List<AlchemyRecipes.Recipe>> rows) {
 		super(section);
-		this.recipeCount = recipes.size();
-		for (int i = 0; i < recipeCount; i++) {
-			AlchemyRecipes.Recipe r = recipes.get(i);
+		this.rows = rows;
+	}
+
+	private void refresh() {
+		long frame = System.currentTimeMillis() / CYCLE_MS;
+		if (frame == builtFrame) return;
+		builtFrame = frame;
+		slots.clear();
+		for (int i = 0; i < rows.size(); i++) {
+			List<AlchemyRecipes.Recipe> group = rows.get(i);
+			AlchemyRecipes.Recipe r = group.get((int) (frame % group.size()));
 			int py = ROWS_Y + i * ROW_STEP;
 			addSlot(new ItemStack(r.base()), BASE_X, py);
 			addSlot(r.a().toStack(), A_X, py);
@@ -61,14 +70,14 @@ public class GuidebookPagePotions extends GuidebookPage {
 	public void renderBackground(TextureManager re, int x, int y) {
 		super.renderBackground(re, x, y);
 		re.bindTexture(re.loadTexture("/assets/minecraft/textures/gui/container/guidebook/guidebook.png"));
-		for (int i = 0; i < recipeCount; i++) {
+		for (int i = 0; i < rows.size(); i++) {
 			this.drawTexturedModalRect(x + ARROW_X, y + ROWS_Y + i * ROW_STEP + 1, 234, 0, 22, 15);
 		}
 	}
 
 	@Override
 	public void renderForeground(TextureManager re, FontRenderer fr, int x, int y, int mouseX, int mouseY, float partialTicks) {
-		this.drawStringCenteredNoShadow(fr, "Alchemy", x + 79, y + 12, TEXT);
+		refresh();
 		for (SlotGuidebook slot : slots) {
 			this.drawSlot(x + slot.x - 1, y + slot.y - 1, -1);
 			itemElement.render(slot.getItemStack(), x + slot.x, y + slot.y, isOver(slot, x, y, mouseX, mouseY), slot);
@@ -78,6 +87,7 @@ public class GuidebookPagePotions extends GuidebookPage {
 	@Override
 	public void renderOverlay(TextureManager re, FontRenderer fr, int x, int y, int mouseX, int mouseY, float partialTicks) {
 		super.renderOverlay(re, fr, x, y, mouseX, mouseY, partialTicks);
+		refresh();
 		for (SlotGuidebook slot : slots) {
 			if (isOver(slot, x, y, mouseX, mouseY) && slot.hasItem()) {
 				GLRenderer.setColor4f(1.0F, 1.0F, 1.0F, 1.0F);

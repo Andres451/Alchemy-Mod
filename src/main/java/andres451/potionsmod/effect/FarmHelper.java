@@ -40,6 +40,7 @@ public class FarmHelper {
 		List<TilePos> layer = new ArrayList<>();
 		Set<Long> seen = new HashSet<>();
 		int count = 0;
+		int max;
 	}
 
 	private static final Map<Player, Chain> CHAINS = new WeakHashMap<>();
@@ -70,6 +71,7 @@ public class FarmHelper {
 		if (world == null || world.isClientSide || block == null) return;
 		if (!ModEffects.has(player, ModEffects.FARM) || !isCrop(block)) return;
 		Chain c = new Chain();
+		c.max = ModEffects.scaleCount(FARM_MAX_BLOCKS, ModEffects.strength(player, ModEffects.FARM));
 		c.block = block;
 		c.seen.add(key(origin.x(), origin.y(), origin.z()));
 		c.layer.addAll(neighbors(world, c, origin));
@@ -89,7 +91,7 @@ public class FarmHelper {
 		List<TilePos> next = new ArrayList<>();
 		boolean sound = true;
 		for (TilePos pos : c.layer) {
-			if (c.count >= FARM_MAX_BLOCKS) break;
+			if (c.count >= c.max) break;
 			if (world.getBlockType(pos) != c.block) continue;
 			int data = world.getBlockData(pos);
 			if (sound) { world.playBlockEvent(pos, 2001, c.block.id()); sound = false; }
@@ -98,15 +100,16 @@ public class FarmHelper {
 			c.count++;
 			next.addAll(neighbors(world, c, pos));
 		}
-		if (next.isEmpty() || c.count >= FARM_MAX_BLOCKS) CHAINS.remove(p);
+		if (next.isEmpty() || c.count >= c.max) CHAINS.remove(p);
 		else c.layer = next;
 	}
 
 	private static void bonemealUnder(World world, Player p) {
+		int radius = ModEffects.scale(FARM_BONEMEAL_RADIUS, ModEffects.strength(p, ModEffects.FARM));
 		int cx = MathHelper.floor(p.x), cz = MathHelper.floor(p.z);
 		int y0 = MathHelper.floor(p.y);
-		for (int dx = -FARM_BONEMEAL_RADIUS; dx <= FARM_BONEMEAL_RADIUS; dx++) {
-			for (int dz = -FARM_BONEMEAL_RADIUS; dz <= FARM_BONEMEAL_RADIUS; dz++) {
+		for (int dx = -radius; dx <= radius; dx++) {
+			for (int dz = -radius; dz <= radius; dz++) {
 				for (int y = y0; y >= y0 - 2; y--) {
 					TilePos pos = new TilePos(cx + dx, y, cz + dz);
 					Block<?> b = world.getBlockType(pos);

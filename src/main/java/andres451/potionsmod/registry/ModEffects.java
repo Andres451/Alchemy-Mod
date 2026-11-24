@@ -6,6 +6,7 @@ import static andres451.potionsmod.PotionsMod.MOD_ID;
 
 import java.util.Collections;
 
+import andres451.potionsmod.PotionVariant;
 import andres451.potionsmod.effect.FarmHelper;
 import andres451.potionsmod.d_interface.ISomnia;
 import andres451.potionsmod.d_interface.ISomniaSync;
@@ -20,65 +21,65 @@ import sunsetsatellite.catalyst.effects.api.effect.IHasEffects;
 
 public class ModEffects {
 
+	private static final int MAX_STACK = PotionVariant.values().length; // 3
+
 	private static Effect simple(String name, int ticks) {
 		return new Effect("effect." + MOD_ID + "." + name, MOD_ID + ":" + name,
-			Collections.emptyList(), EffectTimeType.RESET, 1).setDefaultDuration(ticks);
+			Collections.emptyList(), EffectTimeType.RESET, MAX_STACK).setDefaultDuration(ticks);
 	}
 
 	public static final Effect DAMAGE_BOOST = simple("damage_boost", DAMAGE_BOOST_DURATION);
 
 	public static final Effect REGEN = new Effect(
 		"effect." + MOD_ID + ".regen", MOD_ID + ":regen",
-		Collections.emptyList(), EffectTimeType.RESET, 1
+		Collections.emptyList(), EffectTimeType.RESET, 3
 	) {
 		@Override
 		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
-			if (container.getParent() instanceof Player && stack.getTickCount() % REGEN_INTERVAL == 0) {
-				((Player) container.getParent()).heal(REGEN_AMOUNT);
+			if (container.getParent() instanceof Player p && stack.getTickCount() % REGEN_INTERVAL == 0) {
+				p.heal(scale(REGEN_AMOUNT, strength(p, REGEN)));
 			}
 		}
 	}.setDefaultDuration(REGEN_DURATION);
 
 	public static final Effect SPEED = new Effect(
 		"effect." + MOD_ID + ".speed", MOD_ID + ":speed",
-		Collections.emptyList(), EffectTimeType.RESET, 1
+		Collections.emptyList(), EffectTimeType.RESET, 3
 	) {
 		@Override
 		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
 			if (container.getParent() instanceof Player p) {
-				p.speed *= SPEED_MULTIPLIER;
-				p.flySpeed *= SPEED_MULTIPLIER;
+				float f = (float) bonus(p, SPEED, SPEED_MULTIPLIER);
+				p.speed *= f;
+				p.flySpeed *= f;
 			}
 		}
 	}.setDefaultDuration(SPEED_DURATION);
 
 	public static final Effect DIG_SPEED = simple("dig_speed", DIG_SPEED_DURATION);
-
 	public static final Effect RESISTANCE = simple("resistance", RESISTANCE_DURATION);
-
 	public static final Effect SMALL = simple("small", SMALL_DURATION);
-
 	public static final Effect NIGHT_VISION = simple("night_vision", NIGHT_VISION_DURATION);
-
 	public static final Effect INVISIBLE = simple("invisible", INVISIBLE_DURATION);
 
 	public static final Effect FLIGHT = new Effect(
 		"effect." + MOD_ID + ".flight", MOD_ID + ":flight",
-		Collections.emptyList(), EffectTimeType.RESET, 1
+		Collections.emptyList(), EffectTimeType.RESET, 3
 	) {
 		@Override
 		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
 			if (!(container.getParent() instanceof Player p)) return;
 			p.fallDistance = 0.0F;
 			if (p.vehicle != null || p.isPlayerSleeping()) return;
+			double s = strength(p, FLIGHT);
 			if (p.isJumping()) {
-				p.yd = FLIGHT_UP_SPEED;
+				p.yd = FLIGHT_UP_SPEED * s;
 			} else if (p.isSneaking()) {
-				p.yd = FLIGHT_DOWN_SPEED;
+				p.yd = FLIGHT_DOWN_SPEED * s;
 			} else {
 				p.yd = FLIGHT_IDLE_SPEED;
 			}
-			p.flySpeed = FLIGHT_SPEED;
+			p.flySpeed = (float) (FLIGHT_SPEED * s);
 		}
 	}.setDefaultDuration(FLIGHT_DURATION);
 
@@ -86,7 +87,7 @@ public class ModEffects {
 
 	public static final Effect SOMNIA = new Effect(
 		"effect." + MOD_ID + ".somnia", MOD_ID + ":somnia",
-		Collections.emptyList(), EffectTimeType.RESET, 1
+		Collections.emptyList(), EffectTimeType.RESET, 3
 	) {
 		@Override
 		public <T> void expired(EffectStack stack, EffectContainer<T> container) {
@@ -101,7 +102,7 @@ public class ModEffects {
 
 	public static final Effect REPOSITION = new Effect(
 		"effect." + MOD_ID + ".reposition", MOD_ID + ":reposition",
-		Collections.emptyList(), EffectTimeType.RESET, 1
+		Collections.emptyList(), EffectTimeType.RESET, 3
 	) {
 		@Override
 		public <T> void expired(EffectStack stack, EffectContainer<T> container) {
@@ -115,7 +116,7 @@ public class ModEffects {
 
 	public static final Effect POPPING = new Effect(
 		"effect." + MOD_ID + ".popping", MOD_ID + ":popping",
-		Collections.emptyList(), EffectTimeType.RESET, 1
+		Collections.emptyList(), EffectTimeType.RESET, 3
 	) {
 		@Override
 		public <T> void expired(EffectStack stack, EffectContainer<T> container) {
@@ -132,7 +133,7 @@ public class ModEffects {
 
 	public static final Effect FARM = new Effect(
 		"effect." + MOD_ID + ".farm", MOD_ID + ":farm",
-		Collections.emptyList(), EffectTimeType.RESET, 1
+		Collections.emptyList(), EffectTimeType.RESET, 3
 	) {
 		@Override
 		public <T> void tick(EffectStack stack, EffectContainer<T> container) {
@@ -159,6 +160,12 @@ public class ModEffects {
 		stack.start(target.getContainer());
 	}
 
+	public static void give(Player player, Effect effect, int ticks, int amount, PotionVariant v) {
+		((IHasEffects<?>) player).getContainer().remove(effect);
+		int scaledTicks = Math.max(1, (int) Math.round(ticks * v.duration()));
+		give(player, effect, scaledTicks, v.stackAmount());
+	}
+
 	public static void clear(Player player) {
 		EffectContainer<?> container = ((IHasEffects<?>) player).getContainer();
 		for (Effect e : ALL) {
@@ -169,6 +176,28 @@ public class ModEffects {
 	public static boolean has(Player player, Effect effect) {
 		EffectContainer<?> c = ((IHasEffects<?>) player).getContainer();
 		return c != null && c.hasEffect(effect);
+	}
+
+	public static PotionVariant variantOf(Player player, Effect effect) {
+		if (player == null) return PotionVariant.NORMAL;
+		EffectContainer<?> c = ((IHasEffects<?>) player).getContainer();
+		if (c == null) return PotionVariant.NORMAL;
+		for (EffectStack s : c.getEffects()) {
+			if (s.getEffect() == effect) return PotionVariant.fromStackAmount(s.getAmount());
+		}
+		return PotionVariant.NORMAL;
+	}
+
+	public static double strength(Player player, Effect effect) {
+		return variantOf(player, effect).strength();
+	}
+
+	public static double bonus(Player player, Effect effect, double base) {
+		return Math.max(0.0, 1.0 + (base - 1.0) * strength(player, effect));
+	}
+
+	public static int scaleCount(int value, double factor) {
+		return Math.max(1, (int) Math.round(value * factor));
 	}
 
 	public static int scale(int value, double factor) {

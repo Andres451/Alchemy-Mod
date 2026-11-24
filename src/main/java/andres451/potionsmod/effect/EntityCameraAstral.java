@@ -1,5 +1,6 @@
 package andres451.potionsmod.effect;
 
+import andres451.potionsmod.registry.ModEffects;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -30,6 +31,7 @@ public class EntityCameraAstral extends EntityCameraFirstPerson {
 
 	@Override
 	public void tick() {
+		double accel = ASTRAL_ACCEL * ModEffects.strength(client.thePlayer, ModEffects.ASTRAL);
 		xo = x; yo = y; zo = z;
 		yRotO = yRot; xRotO = xRot;
 		if (client.currentScreen == null) {
@@ -37,10 +39,10 @@ public class EntityCameraAstral extends EntityCameraFirstPerson {
 			float s = (GameSettings.KEY_LEFT.isPressed() ? 1 : 0) - (GameSettings.KEY_RIGHT.isPressed() ? 1 : 0);
 			double yaw = Math.toRadians(yRot);
 			double sin = Math.sin(yaw), cos = Math.cos(yaw);
-			vx += (-f * sin + s * cos) * ASTRAL_ACCEL;
-			vz += (f * cos + s * sin) * ASTRAL_ACCEL;
-			if (GameSettings.KEY_JUMP.isPressed()) vy += ASTRAL_ACCEL;
-			if (GameSettings.KEY_SNEAK.isPressed()) vy -= ASTRAL_ACCEL;
+			vx += (-f * sin + s * cos) * accel;
+			vz += (f * cos + s * sin) * accel;
+			if (GameSettings.KEY_JUMP.isPressed()) vy += accel;
+			if (GameSettings.KEY_SNEAK.isPressed()) vy -= accel;
 		}
 		x += vx; y += vy; z += vz;
 		vx *= ASTRAL_HORIZONTAL_FRICTION; vz *= ASTRAL_HORIZONTAL_FRICTION; vy *= ASTRAL_VERTICAL_FRICTION;
