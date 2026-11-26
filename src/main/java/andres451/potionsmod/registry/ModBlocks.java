@@ -4,6 +4,7 @@ import static andres451.potionsmod.PotionsMod.MOD_ID;
 
 import andres451.potionsmod.alchemy_table.BlockLogicAlchemyTable;
 import net.minecraft.core.block.Block;
+import net.minecraft.core.block.Blocks;
 import net.minecraft.core.block.tag.BlockTags;
 import net.minecraft.core.item.Items;
 import net.minecraft.core.sound.BlockSounds;
@@ -23,7 +24,7 @@ public class ModBlocks {
 			.setHardness(2.5F)
 			.setResistance(10.0F)
 			.setTags(BlockTags.MINEABLE_BY_AXE, BlockTags.MINEABLE_BY_PICKAXE)
-			.setCreativeInventoryPlacement(new CreativeInventoryPlacement.After(() -> Items.TOOL_SWORD_STEEL))
+			.setCreativeInventoryPlacement(new CreativeInventoryPlacement.After(() -> Blocks.TROMMEL_IDLE))
 			.build("alchemy_table", ALCHEMY_TABLE_ID, b -> new BlockLogicAlchemyTable(b, false));
 
 		alchemyTableActive = new BlockBuilder(MOD_ID)

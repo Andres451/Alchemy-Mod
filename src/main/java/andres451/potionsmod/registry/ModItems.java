@@ -27,7 +27,7 @@ public class ModItems {
 		String name = "jar_" + color + suffix;
 		int id = BASE_ID + JAR_COLORS.length * v.ordinal() + index;
 		Item item = new ItemBuilder(MOD_ID)
-			.setCreativeInventoryPlacement(new CreativeInventoryPlacement.After(() -> Items.TOOL_SWORD_STEEL))
+			.setCreativeInventoryPlacement(new CreativeInventoryPlacement.After(() -> Items.JAR))
 			.build(new ModPotionItem(name, MOD_ID + ":item/" + name, id, color, v));
 		PotionsMod.LOGGER.info("Potions: registered {} (id {}, texture {}:item/{})", name, id, MOD_ID, name);
 		return item;
